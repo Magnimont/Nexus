@@ -1,0 +1,291 @@
+body,
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  overflow: hidden;
+
+  height: 100%;
+  width: 100%;
+}
+
+div.loading {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+  z-index: 2;
+
+  background: var(--bg-darkest);
+  color: var(--fg-light);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+div.loading > div.circle {
+  height: 4rem;
+  width: 4rem;
+
+  border-radius: 2rem;
+  overflow: hidden;
+
+  animation: spin 0.5s linear infinite;
+}
+
+div.upper {
+  width: 3.5rem;
+
+  height: 50%;
+  border: 0.25rem solid var(--bg-lightest);
+
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+
+  border-bottom: none;
+}
+
+div.lower {
+  width: 100%;
+
+  height: 50%;
+}
+
+div.loading p {
+  color: var(--fg-dark);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+div.hidden {
+  display: none;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  background: var(--bg-darkest);
+}
+
+.hero-navbar {
+  width: auto;
+  max-width: 25rem;
+
+  display: flex;
+}
+
+.flex-navbar * {
+  animation: fade 0.5s ease-in-out;
+}
+
+.chat-section {
+  flex-grow: 1;
+  background: var(--bg-lightest);
+
+  display: flex;
+  flex-direction: column;
+}
+
+div.chat-header,
+div.message-manager {
+  height: 4rem;
+  width: 100%;
+
+  display: flex;
+}
+
+.message-manager {
+  padding-bottom: 0.8rem;
+  padding-top: 0.4rem;
+
+  box-shadow: 0 -1rem 2rem var(--bg-lightest);
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.chat-header {
+  display: flex;
+  flex-direction: row;
+
+  border-bottom: 1px solid var(--bg-medium);
+  color: var(--fg-light);
+}
+
+.chat-header span{
+  opacity: 0.6;
+  margin-right: 0.25rem;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+input.msg-input {
+  width: 80%;
+  height: 2rem;
+
+  margin-left: 5%;
+  outline: none;
+
+  border: none;
+  border-radius: 3px;
+
+  background: var(--bg-medium);
+  color: var(--fg-light);
+
+  padding: 0.5rem;
+  font-family: sans-serif;
+
+  font-size: 1rem;
+}
+
+.message-manager button {
+  height: 3rem;
+  width: 3rem;
+
+  padding: 0.5rem;
+  background: var(--bg-medium);
+
+  border: none;
+  cursor: pointer;
+}
+
+.message-manager button ion-icon {
+  color: var(--fg-light);
+}
+
+.chat-header button.hamburger {
+  align-self: center;
+  border: none;
+
+  height: 100%;
+  width: 4rem;
+
+  background: none;
+  cursor: pointer;
+
+  border-bottom-right-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+}
+
+.chat-header ion-icon {
+  color: var(--fg-light);
+
+  height: 2rem;
+  width: 2rem;
+}
+
+.chat-header-name {
+  width: 6rem;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--fg-light);
+}
+
+.chat-header-name span {
+  opacity: 0.8;
+  margin-right: 0.04rem;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.chat-messages div.msg {
+  margin: 1rem;
+  padding: 0.5rem;
+
+  border-radius: 0.5rem;
+  color: var(--fg-light);
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+
+  max-width: 60%;
+  min-width: 3.5rem;
+
+  animation: fade 1s forwards;
+}
+
+div.friend.selected {
+  background: var(--bg-lightest);
+}
+
+div#self {
+  background: var(--msg-me);
+  align-self: flex-end;
+
+  border-bottom-right-radius: 0px;
+}
+
+div#them {
+  background: var(--msg-them);
+  align-self: flex-start;
+
+  border-bottom-left-radius: 0px;
+}
+
+div.no-friends {
+  width: 100%;
+  height:100%;
+
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.6;
+  color: var(--fg-light);
+}
+
+div#no-dms-open {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.3;
+  color: var(--fg-light);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

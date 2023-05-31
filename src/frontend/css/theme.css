@@ -1,0 +1,11 @@
+:root {
+    --bg-darkest: #111;
+    --bg-medium: #222;
+    --bg-lightest: #333;
+
+    --fg-light: #ccc;
+    --fg-dark: grey;
+
+    --msg-me: dimgrey;
+    --msg-them: grey;
+}

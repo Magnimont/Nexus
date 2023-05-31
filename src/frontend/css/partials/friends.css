@@ -1,0 +1,206 @@
+.friends {
+    height: 100%;
+    width: 18rem;
+  
+    max-width: 100%;
+    background: var(--bg-medium);
+  
+    padding-top: 1rem;
+    overflow-y: auto;
+  }
+  
+  .friends div.search {
+    width: 85%;
+    margin-left: 5%;
+  
+    height: 2rem;
+    display: flex;
+  
+    margin-bottom: 0.5rem;
+    border-radius: 0.3rem;
+  
+    align-items: center;
+    background: var(--bg-darkest);
+  
+    border: 2px solid var(--bg-darkest);
+  }
+  
+  .friends div.search ion-icon {
+    height: 1rem;
+    width: 1rem;
+  
+    color: var(--fg-light);
+  
+    margin-left: 0.5rem;
+    margin-right: 0.3rem;
+  }
+  
+  .friends div.search input {
+    outline: none;
+    border: none;
+  
+    background: var(--bg-darkest);
+    color: var(--fg-light);
+  
+    height: 2rem;
+  }
+  
+  .friends div.manage,
+  div.profile {
+    width: 100%;
+    height: 3.5rem;
+  
+    color: white;
+    display: flex;
+  
+    align-items: center;
+    justify-content: left;
+  
+    transition: background 0.4s ease-in-out;
+  }
+  
+  .friends div.manage:hover,
+  div.profile:hover {
+    background: var(--bg-lightest);
+    cursor: pointer;
+  }
+  
+  div.selected {
+    background: var(--bg-lightest);
+  }
+  
+  .friends div h3 {
+    margin: 0;
+    margin-left: 0.5rem;
+    color: var(--fg-light);
+  }
+  
+  .friends div ion-icon {
+    height: 1.2rem;
+    width: 1.2rem;
+  
+    margin-left: 1rem;
+    color: var(--fg-light);
+  }
+  
+  .friends div.dms-header {
+    width: 100%;
+    height: 2rem;
+  
+    display: flex;
+    flex-direction: row;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    margin-bottom: 1rem;
+  }
+  
+  .friends div.dms-header h4 {
+    margin: 0.3rem;
+    margin-left: 0.6rem;
+    color: var(--fg-dark);
+  }
+  
+  .friends div.dms-header button {
+    margin-right: 0.6rem;
+    display: flex;
+  
+    height: 3rem;
+    width: 3rem;
+  
+    background: transparent;
+    border: none;
+  
+    align-items: center;
+    justify-content: center;
+  
+    cursor: pointer;
+  }
+  
+  .friends div.dms button ion-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  
+  .friends-list {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .friends-list div {
+    width: 100%;
+    height: 3.5rem;
+  
+    display: flex;
+    justify-content: center;
+  }
+  
+  .friend img {
+    height: 2.5rem;
+    width: 2.5rem;
+  
+    border-radius: 1.25rem;
+    margin-left: 0.5rem;
+  
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .friend div.friend-bio {
+    height: 100%;
+    color: var(--fg-light);
+  
+    display: flex;
+    flex-direction: column;
+  
+    margin-top: auto;
+    margin-bottom: auto;
+  
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .friend-bio {
+    padding-left: 0.5rem;
+  }
+  
+  .friend-bio h3.friend-name {
+    margin: 0;
+    margin-left: 0;
+  }
+  
+  .friend-bio h3,
+  .friend-bio p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .friend {
+    animation: fade 0.4s forwards;
+    transition: background 0.4s ease-in-out;
+  
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .friend:hover {
+    background: var(--bg-lightest);
+    cursor: pointer;
+  }
+  
+  .friend#selected {
+    background: var(--bg-lightest);
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }

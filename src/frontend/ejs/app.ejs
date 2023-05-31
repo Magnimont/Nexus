@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App</title>
+
+  <link rel="stylesheet" href="/css/theme.css" type="text/css">
+  <link rel="stylesheet" href="/css/app.css" type="text/css">
+  <link rel="stylesheet" href="/css/default.css" type="text/css">
+  <link rel="stylesheet" href="/css/partials/profile.css" type="text/css">
+  <link rel="stylesheet" href="/css/partials/profileFriends.css" type="text/css">
+
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="/js/partials/slider.js"></script>
+  <script defer src="/js/partials/theme.js"></script>
+  <script defer src="/js/app.js"></script>
+</head>
+
+<body>
+
+  <div class="loading">
+    <div class="circle">
+      <div class="upper"></div>
+      <div class="lower"></div>
+    </div>
+    <p>Loading...</p>
+  </div>
+  <div class="container">
+
+    <div class="hero-navbar">
+      <%- include('./partials/navbar.ejs') %>
+      <%- include('./partials/friends.ejs') %>
+    </div>
+
+    <div class="chat-section">
+      <div class="chat-header">
+        <button class="hamburger" onclick="slider()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <h3><span>@</span>userName</h3>
+      </div>
+      <div class="chat-messages"></div>
+
+      <div class="message-manager">
+        <input class="msg-input" placeholder="Type something..."></input>
+        <button class="msg-send">
+          <ion-icon name="send-outline"></ion-icon>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="profile-section hidden">
+
+      <div class="profile-header">
+        <button class="hamburger" onclick="slider()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+
+
+      <div class="profile-parent">
+        <div class="profile-banner">
+          <button class="edit-banner-btn">
+            <ion-icon name="create-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="profile-info-parent">
+
+          <div class="profile-pic">
+            <button class="pfp-change-btn">
+              <ion-icon name="cloud-upload-outline"></ion-icon>
+            </button>
+          </div>
+
+          <div class="profile-name-wrapper">
+            <input id="username-input" class="disabled-input">
+            <div id="user-badges"></div>
+          </div>
+
+          <div class="profile-edit-wrapper">
+            <button class="edit-name-btn">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+          </div>
+          
+        </div>
+
+        <div class="user-bio-wrapper">
+          <h4>Bio (soon)<button class="edit-bio-btn">
+              <ion-icon name="create-outline"></ion-icon>
+            </button></h4>
+          <textarea></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="friends-section hidden">
+      <div class="friends-header">
+        <button class="hamburger" onclick="slider()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+
+      <h2 class="profile-friends-section-heading"></h2>
+
+      <div class="profile-add-friend-wrapper">
+        <h4>ADD FRIEND</h4>
+        <p>You can add friends by their tag.</p>
+
+        <div class="profile-add-friend-form">
+          <input class="profile-add-friend-search">
+          <button>Done</button>
+        </div>
+      </div>
+
+      <p class="friend-error-notice"></p>
+
+      <h4>PENDING REQUESTS</h4>
+      <p class="pending-requests-info">Pending friend requests show up here.</p>
+      <div class="pending-requests-list"></div>
+
+      <h4>YOUR FRIENDS</h4>
+      <p class="friends-list-info">A list of people who are your friends on this app.</p>
+      <div class="profile-friends-list-wrapper"></div>
+
+    </div>
+
+    <input class="pfp-upload" type="file" accept="image/*" multiple="false">
+    <input class="banner-upload" type="file" accept="image/*" multiple="false">
+  </div>
+
+  <script type="module" defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

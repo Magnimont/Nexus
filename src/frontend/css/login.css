@@ -1,0 +1,144 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+
+  background: linear-gradient(to right, purple, slateblue);
+
+  color: #ccc;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+form {
+  background: #333;
+  padding: 1rem;
+
+  width: 25rem;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.5rem;
+}
+
+form div {
+  width: 90%;
+  height: auto;
+}
+
+form div.heading-div {
+  padding: 0.5rem;
+  height: auto;
+}
+
+form div.links-div p {
+  text-decoration: underline;
+  opacity: 0.8;
+
+  color: #ccd;
+  cursor: pointer;
+}
+
+form div.links-div {
+  margin-bottom: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-evenly;
+  font-size: 0.9rem;
+}
+
+form > div > button {
+  height: 2rem;
+  width: 100%;
+
+  background: slateblue;
+  color: #ccc;
+
+  border: none;
+  border-radius: 0.3rem;
+
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+}
+
+div.heading-div h2 {
+  margin-bottom: 0.4rem;
+}
+
+div.heading-div h4 {
+  opacity: 0.7;
+  margin-left: 0.5rem;
+
+  margin-top: 0;
+}
+
+form > div > input {
+  width: 90%;
+  max-width: 100%;
+
+  height: 2rem;
+  padding-left: 0.6rem;
+
+  border-radius: 0.3rem;
+  border: none;
+
+  background: #222;
+  color: #ccc;
+
+  outline: none;
+  margin-top: 1rem;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  margin-bottom: 1rem;
+}
+
+p.err-msg {
+  color: crimson;
+  margin-top: 0.25rem;
+  margin-left: 0.2rem;
+}
+
+div.acc-verification-div {
+  display: none;
+}
+
+button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}

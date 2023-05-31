@@ -1,0 +1,231 @@
+html, body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+
+.container {
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+}
+
+.settings-section {
+    color: var(--fg-light);
+    flex-grow: 1;
+
+    background: var(--bg-lightest);
+    padding: 1rem;
+
+    overflow-y: auto;
+}
+
+.settings-section * {
+    animation: fade 0.4s ease-in-out;
+}
+
+.settings-section h2, h4 {
+    opacity: 0.7;
+    margin-bottom: 0;
+}
+
+.settings-section p {
+    margin-left: 0.8rem;
+    margin-bottom: 1.85rem;
+}
+
+.app-themes-settings {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 1rem;
+}
+
+.app-theme-options {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 1.85rem;
+}
+
+.dark-theme-wrapper,
+.light-theme-wrapper,
+.crimson-theme-wrapper,
+.azure-theme-wrapper,
+.forest-theme-wrapper {
+    height: 6rem;
+    width: 6rem;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
+}
+
+.dark-theme-wrapper:hover,
+.light-theme-wrapper:hover,
+.crimson-theme-wrapper:hover,
+.azure-theme-wrapper:hover,
+.forest-theme-wrapper:hover {
+    transform: translateY(-0.35rem);
+}
+
+.picked {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.dark-theme-circle {
+    background: linear-gradient(65deg, #111, #333);
+}
+
+.light-theme-circle {
+    background: linear-gradient(65deg, grey, #fff);
+}
+
+.crimson-theme-circle {
+    background: linear-gradient(65deg, orangered, crimson);
+}
+
+.azure-theme-circle {
+    background: linear-gradient(65deg, midnightblue, slateblue);
+}
+
+.forest-theme-circle {
+    background: linear-gradient(65deg, darkgreen, forestgreen)
+}
+
+.theme-circle {
+    height: 3.5rem;
+    width: 3.5rem;
+
+    border-radius: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-msg-s-header {
+    display: flex;
+    align-items: center;
+
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.app-msg-s-header button {
+    height: 1.5rem;
+    width: 1.5rem;
+
+    border-radius: 0.5rem;
+    background: var(--bg-darkest);
+
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.app-msg-s-header p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.ticked svg {
+    stroke: var(--fg-light);
+    height: 1rem;
+    width: 1rem;
+}
+
+.acc-btns {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.acc-btns button {
+    height: 2.5rem;
+    min-width: 6rem;
+
+    margin: 1rem;
+    border-radius: 0.5rem;
+
+    border: 1px solid var(--fg-light);
+    color: var(--fg-light);
+
+    background: none;
+    cursor: pointer;
+}
+
+button.del-acc-btn {
+    border: 1px solid rgb(240, 40, 80);
+    color: rgb(240, 40, 80);
+
+    width: auto;
+}
+
+.edit-div {
+    width: 25rem;
+    max-width: 90%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: left;
+
+    margin-left: 4%;
+}
+
+.edit-div input {
+    background: none;
+    border: none;
+
+    padding: 0.5rem;
+    color: var(--fg-light);
+
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.edit-div input.active {
+    background: var(--bg-darkest);
+}
+
+.edit-div input.inp-disabled {
+    pointer-events: none;
+    user-select: none;
+}
+
+.edit-div button {
+    background: none;
+    border: none;
+
+    color: var(--fg-light);
+    cursor: pointer;
+
+    height: 2.5rem;
+    width: 2.5rem;
+
+    transition: transform 0.4s ease-in-out;
+}
+
+.edit-div button:hover {
+    transform: translateY(-2px);
+}
+
+.edit-div button ion-icon {
+    height: 1rem;
+    width: 1rem;
+}

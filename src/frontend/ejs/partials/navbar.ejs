@@ -1,0 +1,53 @@
+<div class="navbar-parent">
+    <link rel="stylesheet" href="/css/partials/navbar.css" type="text/css">
+  
+    <div class="navbar">
+      
+      <div class="chat">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </div>
+  
+      <div class="bell">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </div>
+  
+      <div class="settings">
+        <ion-icon name="cog-outline"></ion-icon>
+      </div>
+  
+      <script>
+        const settingsNavDiv = document.querySelector('div.navbar-parent div.settings');
+
+        settingsNavDiv.addEventListener('click', x => {
+          if (!window.location.href.includes('/app/settings')) {
+            localStorage.setItem('selected', 'div.settings');
+            window.location.href = '/app/settings';
+          }
+        });
+  
+        const chatNavDiv = document.querySelector('div.navbar-parent div.chat');
+
+        chatNavDiv.addEventListener('click', x => {
+          if (!window.location.href.endsWith('/app')) {
+            localStorage.setItem('selected', 'div.chat');
+            window.location.href = '/app';
+          }
+        });
+  
+        const alertNavDiv = document.querySelector('div.navbar-parent div.bell');
+
+        alertNavDiv.addEventListener('click', x => {
+          if (!window.location.href.includes('/alerts')) {
+            window.location.href = '/app/alerts';
+            localStorage.setItem('selected', 'div.bell');
+          }
+        });
+
+        const selected = window.location.href.endsWith('/app')
+        ? 'div.chat'
+        : localStorage.getItem('selected');
+
+        document.querySelector(selected).style.background = 'var(--bg-darkest)';
+      </script>
+    </div>
+  </div>

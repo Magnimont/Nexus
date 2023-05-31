@@ -1,0 +1,35 @@
+.navbar {
+    width: 3.5rem;
+    max-width: 20%;
+  
+    height: 100%;
+    margin-left: 0.4rem;
+  }
+  
+  .navbar div {
+    height: 3rem;
+    width: 3rem;
+  
+    background: var(--bg-lightest);
+    margin-top: 0.3rem;
+  
+    display: flex;
+    cursor: pointer;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 0.4rem;
+    transition: background 0.4s ease-in-out;
+  }
+  
+  .navbar div:hover {
+    background: var(--bg-medium);
+  }
+  
+  .navbar > div > ion-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  
+    color: var(--fg-light);
+  }

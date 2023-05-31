@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+
+    <script defer src="/js/login.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="login-form">
+        
+        <div class="heading-div">
+          <h2>Login</h2>
+          <h4>Fill in your account details to log in</h4>
+        </div>
+
+        <div class="username-div hidden">
+          <input placeholder="Username" required/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="email-div">
+          <input placeholder="Email" type="email"/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="password-div">
+          <input placeholder="Password" type="password" required/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="repeat-password-div hidden">
+          <input placeholder="Repeat Password" type="password"/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="forgot-password-div hidden">
+          <input placeholder="account email"/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="acc-verification-div hidden">
+          <input placeholder="Enter 4-digit code"/>
+          <p class="err-msg"></p>
+        </div>
+
+        <div class="links-div">
+          <p class="forgot-link">Forgot Password?</p>
+          <p class="method-link" id="signup">Don't have an account?</p>
+        </div>
+
+        <div class="login-div">
+          <p class="err-login"></p>
+          <button class="login-btn" id="login" type="button">Let me in !</button>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>

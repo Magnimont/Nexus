@@ -1,0 +1,23 @@
+::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #333;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+  }

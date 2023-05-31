@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App | Settings</title>
+
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="/css/app.css" type="text/css">
+    <link rel="stylesheet" href="/css/theme.css" type="text/css">
+
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/settings.js"></script>
+
+    <style>
+        ion-icon {
+            color: var(--fg-light);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <%- include('./partials/navbar.ejs') %>
+
+        <div class="settings-section">
+            <div class="settings-app">
+                <h2>App Settings</h2>
+                <p>General app settings</p>
+
+                <div class="app-themes-settings">
+                    <div class="theme-heading">
+                        <h4>Themes</h4>
+                        <p>Click on the circles of theme cards to try them. Once clicked, it will be saved automatically.</p>
+                    </div>
+
+                    <div class="app-theme-options">
+
+                        <div class="dark-theme-wrapper">
+                            <div class="dark-theme-circle theme-circle" id="dark"></div>
+                            <span>Dark</span>
+                        </div>
+
+                        <div class="light-theme-wrapper">
+                            <div class="light-theme-circle theme-circle" id="light"></div>
+                            <span>Light</span>
+                        </div>
+
+                        <div class="azure-theme-wrapper">
+                            <div class="azure-theme-circle theme-circle" id="azure"></div>
+                            <span>Azure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-messages-settings">
+                    <h4>Messages</h4>
+                    <p>Customize your message settings from here.</p>
+
+                    <div class="app-msgs-options">
+                        <div class="app-msg-s-header">
+                            <button></button> <p>Play sound on message receive?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-account-settings" style="margin-top:3rem">
+                    <h4>Account</h4>
+                    <p>Manage your account settings from here</p>
+
+                    <div class="edit-opts">
+
+                        <div class="email-edit edit-div">
+
+                            <div class="mail-wrapper">
+                                <button><ion-icon name="eye-outline"></ion-icon></button>
+                                <input placeholder="Email" class="email-input inp-disabled">
+                            </div>
+
+                            <button class="edit-email-btn"><ion-icon name="create-outline"></ion-icon></button>
+
+                        </div>
+
+                        <div class="pass-edit edit-div">
+
+                            <div class="pass-wrapper">
+                                <button><ion-icon name="eye-outline"></ion-icon></button>
+                                <input placeholder="Password" class="password-input inp-disabled">
+                            </div>
+
+                             <button class="edit-pass-btn"><ion-icon name="create-outline"></ion-icon></button>
+                        </div>
+
+                    </div>
+
+                    <div class="acc-btns">
+                        <button class="del-acc-btn" onclick="delAcc()">Delete Account</button>
+                        <button class="logout-btn" onclick="logout()">Log out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
