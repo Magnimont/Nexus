@@ -5,13 +5,12 @@ NexCord is an open-source chatting app inspired by Discord, designed to provide 
 ## Features
 
 - Real-time chat functionality
-- Support for text and multimedia messages
+- Support for text messages
 - User registration and authentication system
-- Create and join chat rooms
 - Direct messaging between users
-- User profiles with avatars and status
-- Rich text formatting options
-- Emojis and reactions
+- User profiles with avatars and banners
+- Emojis and reactions (Soon)
+- Custom Themes
 
 ## Prerequisites
 
