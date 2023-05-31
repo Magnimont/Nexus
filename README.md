@@ -25,7 +25,6 @@ Before running NexCord locally, make sure you have the following:
    ```bash
    git clone https://github.com/your-username/NexCord.git
    ```
-   
 2.Install dependencies:
 
    ```bash
@@ -44,7 +43,6 @@ Customize other settings in config/config.js if needed.
    Copy code
    npm start
    ```
-   
 5. Open your browser and visit http://localhost:3000 to access NexCord.
 
 ### Public Hosting (Coming Soon) 🌐
