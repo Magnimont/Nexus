@@ -25,6 +25,7 @@ Before running NexCord locally, make sure you have the following:
    ```bash
    git clone https://github.com/your-username/NexCord.git
    ```
+   
 2.Install dependencies:
 
    ```bash
@@ -71,7 +72,7 @@ Help us achieve these goals by giving NexCord a star and sharing it with others!
 
 ### Authors 👨‍💻
 
-NexCord is developed by Vikas Jha and Gaurav from NoError Studios.
+NexCord is developed by Gaurav and Vikas Jha from NoError Studios.
 
 ### License 📄
 
@@ -88,6 +89,14 @@ We would like to express our gratitude to the following open-source projects and
 
 ### Contact 📧
 
-For any questions or inquiries, please reach out to our team at contact@nexcord.com.
+For any questions or inquiries, please reach out to our team at contact@noerror.studio.
+
+### Hiring and Custom Development 💼
+
+Looking for customized features or interested in hiring our team for a custom version of NexCord? or maybe a greator project? Visit [NoError Studios](https://www.noerrorstudios.com/) or contact us via [GitHub](https://github.com/Saizuo) for more information.
+
+### Sponsorship 💖
+
+Consider sponsoring the NexCord project to support its ongoing development and maintenance. Your sponsorship helps us dedicate more time and resources to improving the app and adding new features. You can sponsor the project by clicking the "Sponsor" button on our [GitHub repository](https://github.com/noerrorstudios/NexCord).
 
 Enjoy chatting with NexCord! 😃
