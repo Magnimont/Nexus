@@ -20,7 +20,8 @@ Before running NexCord locally, make sure you have the following:
 
 ## Getting Started 🚀
 
-1. Clone the repository:
+
+1.Clone the repository:
 
    ```bash
    git clone https://github.com/your-username/NexCord.git
@@ -43,7 +44,7 @@ Customize other settings in config/config.js if needed.
    Copy code
    npm start
    ```
-5. Open your browser and visit http://localhost:3000 to access NexCord.
+5.Open your browser and visit http://localhost:3000 to access NexCord.
 
 ### Public Hosting (Coming Soon) 🌐
 
