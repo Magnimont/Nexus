@@ -41,10 +41,9 @@ Customize other settings in config/config.js if needed.
 4.Start the server:
 
    ```bash
-   Copy code
    npm start
    ```
-5.Open your browser and visit http://localhost:3000 to access NexCord.
+5.Open your browser and visit `http://localhost:3000` to access NexCord.
 
 ### Public Hosting (Coming Soon) 🌐
 
@@ -71,7 +70,7 @@ Help us achieve these goals by giving NexCord a star and sharing it with others!
 
 ### Authors 👨‍💻
 
-NexCord is developed by Gaurav and Vikas Jha from NoError Studios.
+NexCord is developed by [Gaurav](https://discord.com/users/891214041391988757) and [Vikas Jha](https://discord.com/users/532177714203852800) from NoError Studios.
 
 ### License 📄
 
@@ -83,12 +82,12 @@ We would like to express our gratitude to the following open-source projects and
 
 - Socket.io 🌐
 - Express.js 🚂
-- Bootstrap 🎨
-- FontAwesome 🌈
+- MongoDB 📝
+- Nodemailer 📨
 
 ### Contact 📧
 
-For any questions or inquiries, please reach out to our team at contact@noerror.studio.
+For any questions or inquiries, please reach out to our team at `contact@noerror.studio`
 
 ### Hiring and Custom Development 💼
 
