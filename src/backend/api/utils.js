@@ -109,7 +109,7 @@ router.post('/verify', async (req, res) => {
         const { mailer } = require('../../nodemailer.js');
         
         await mailer.sendMail({
-            from: `"Sxlitude", <${auth.user}>`,
+            from: `"NexCord", <${auth.user}>`,
             to: req.body.email,
             subject: 'Verify your account',
             html: `
