@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 /* Alerts */
 router.get('/alerts', (req, res) => {
-  res.render('alerts.ejs');
+  res.render('alerts.ejs'); // TODO: implement alerts.ejs
 });
 
 /* Settings */

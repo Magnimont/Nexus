@@ -44,7 +44,9 @@ npm install
 
 Update the database configuration in `config/database.js`.
 Customize other settings in `config/config.js` if needed.
-Change the indicated variables in `nodemailer.js` and `settings.js` too.
+Change the indicated variables in `settings.js` too.
+In the `.env.example` file change all variables to whatever you want
+and change the filename to `.env`.
 
 #### 4.Start the server:
 

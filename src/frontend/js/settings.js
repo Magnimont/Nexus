@@ -156,8 +156,7 @@ function valueChange(input, button, method, details, toggle) {
   });
 
   input.addEventListener('input', async() => {
-    if (input.value < 5) return;
-    else {
+    if (input.value >= 5)  {
       const taken = await isTaken(method.toLowerCase(), input.value);
       if (taken) {
         button.style.pointerEvents = 'none';

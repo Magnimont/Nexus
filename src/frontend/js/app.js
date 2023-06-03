@@ -163,7 +163,7 @@ setCookie()
                 });
 
                 btn.addEventListener('click', async () => {
-                    updatePendingReqs(inp.value);
+                    await updatePendingReqs(inp.value);
                 });
             }
 
@@ -295,7 +295,7 @@ setCookie()
             const requestsDiv = document.querySelector('div.pending-requests-list');
             requestsDiv.innerHTML = '';
 
-            reqs.forEach(async req => {
+            for (const req of reqs) {
                 const requester = (req.s === user_id ? req.r : req.s);
 
                 const res = await fetch(`/api/id/${requester}`);
@@ -333,7 +333,7 @@ setCookie()
 
                 div.id = user.user_tag;
                 handleFriendRequest(div, requestsDiv);
-            });
+            }
         }
 
 
@@ -416,10 +416,8 @@ setCookie()
 
 async function setCookie() {
     const req = await fetch('/api/cookie');
-    const res = await req.json();
-
-    return res;
-};
+    return await req.json();
+}
 
 function toggle(className) {
     const sections = ['friends-section', 'profile-section', 'chat-section'];
@@ -538,7 +536,7 @@ function handleUserChats(user_tag, user_id) {
                         const notification = new Audio();
                         notification.src = '../audio/msg.mp3';
 
-                        if (localStorage.getItem('msgSound')) notification.play();
+                        if (localStorage.getItem('msgSound')) await notification.play();
                     } else {
                         const message = document.createElement('div');
                         message.classList.add('msg');
