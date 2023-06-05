@@ -1,4 +1,4 @@
-# NexCord 🚀
+# Nexus 🚀
 
 NexCord is an open-source chatting app inspired by Discord, designed to provide a modern, feature-rich, and community-driven communication platform. It is built with HTML, JavaScript, CSS, and Node.js.
 
