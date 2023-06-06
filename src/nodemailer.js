@@ -1,11 +1,16 @@
+  /***************************************************************************/
+ /*  DO NOT CHANGE ANYTHING IN THIS FILE UNLESS YOU KNOW WHAT YOU'RE DOING  */
+/***************************************************************************/
+
+require('dotenv').config();
 const mailer = require('nodemailer');
 const { auth } = require('./settings.js');
 
 /* SMTP settings for the app to be able to send mails */
 const transporter = mailer.createTransport({
-  host: 'smtp-mail.outlook.com', // change if needed
-  secureConnection: false, // change accordingly to the host
-  port: 587, // change accordingly to the host
+  host: process.env.SMTP_HOST,
+  secureConnection: (process.env.SMTP_PORT !== '587'),
+  port: process.env.SMTP_PORT,
   tls: {
     ciphers: 'SSLv3',
   },

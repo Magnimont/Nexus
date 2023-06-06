@@ -256,10 +256,8 @@ async function verifyUser(details) {
 
 async function setCookie() {
     const req = await fetch('/api/cookie');
-    const res = await req.json();
-
-    return res;
-};
+    return await req.json();
+}
 
 async function isTaken (key, value) {
     const req = await fetch('/api/taken', { 

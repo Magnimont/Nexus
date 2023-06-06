@@ -7,8 +7,8 @@ module.exports = {
 
     /* Nodemailer Email and password */
     auth: {
-        user: process.env.USER,
-        pass: process.env.PASS
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
     },
 
     /* Mongodb connection string (change this to your own) */

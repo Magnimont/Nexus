@@ -124,6 +124,7 @@ router.post('/verify', async (req, res) => {
     }
 });
 
+/* Get user id by user tag */
 router.get('/userid/:tag', async (req, res) => {
     const authorized = (settings.ownerSecret === req.cookies.accesstoken);
     if (!authorized) res.status(401).json({ err: 'not authorized' });

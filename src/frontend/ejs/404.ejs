@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404</title>
+
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+
+    <style>
+        html {
+            background: black;
+            overflow: hidden;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+        .star404 {
+            max-width: 20px;
+            max-height: 20px;
+            position: absolute;
+            overflow: hidden;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body onload="randomiseStars();">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-dot.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img class="star404" src="../img/white-plus.svg" alt="star">
+    <img src="../img/rocketship.svg" alt="rocketship" style="max-width: 60vw; max-height: 60vh; z-index: 5">
+    <h1><strong style="color:red; z-index:5;">404</strong> - Lost in space and time!</h1>
+    <h3 style="z-index: 5;">I can't find the URL you were looking for. Check the spelling and try again, or go back to the <a href="/app" style="color:lightblue;">home page</a>.</h3>
+
+    <script>
+        function randomiseStars(){
+            const elements = document.querySelectorAll('.star404');
+            Array.from(elements).forEach((element, index) => {
+                let rotation = Math.floor(Math.random() * 359);
+                element.style.transform = `rotate(${rotation}deg)`;
+                const rect = document.body.getBoundingClientRect();
+                element.style.height = `${Math.floor(Math.random() * 15)}px`;
+                element.style.width = `${Math.floor(Math.random() * 15)}px`;
+                element.style.top = rect.top + Math.random() * rect.height + 'px';
+                element.style.left = rect.left + Math.random() * rect.width + 'px';
+            });
+        }
+    </script>
+</body>
+</html>
