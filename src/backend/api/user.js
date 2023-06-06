@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
     const accounts = await db.get('accounts') || [];
     const exists = accounts.find(a => a.user_tag === req.body.user_tag);
 
-    if (exists) res.status(409).json({ err: 'the name is already taken' });
-    else if (exists && exists.email === req.body.email) res.status(409).json({ err: 'the email is taken' });
+    if (exists) res.status(409).json({ err: 'The name is already taken' });
+    else if (exists && exists.email === req.body.email) res.status(409).json({ err: 'The email is taken' });
 
     else {
       const token = genUserToken(req.body);

@@ -28,7 +28,7 @@ require('./handlers/api.js')(app);
 db.on('ready', () => {
   server.listen(port, () => {
 
-    console.log('server started');
+    console.log("server started: ", server.address());
     require('./handlers/socket.js')(io);
 
   });

@@ -6,8 +6,8 @@ setCookie()
             const id = loginButton.id;
 
             if (id === 'login') await handleLogin();
-            else if (id === 'signup') handleSignup();
-            else if (id === 'forgot') handleForgot();
+            else if (id === 'signup') await handleSignup();
+            else if (id === 'forgot') await handleForgot();
         });
 
         const forgotLink = document.querySelector('p.forgot-link');
@@ -153,11 +153,11 @@ async function handleLogin() {
         const res = await req.json();
 
         if (res.token) localStorage.setItem('token', res.token);
-        else error.textContent = 'an error has occured..';
+        else error.textContent = 'An error has occurred while trying to log you in...';
 
         window.location.href = '/app';
     }
-    else error.textContent = 'email or password is invalid';
+    else error.textContent = 'Email or password is invalid';
 }
 
 async function handleSignup() {
@@ -170,21 +170,20 @@ async function handleSignup() {
     const usernameTaken = await isTaken('user_tag', usernameInput.value);
     const emailTaken = await isTaken('email', emailInput.value);
 
-    const passwordTaken = await isTaken('password', passwordInput.value);
     const error = document.querySelector('p.err-login');
-
     error.style.color = 'orangered';
+
     const btn = document.querySelector('button.login-btn');
 
-    if (usernameInput.value.length > 16) error.textContent = 'username cannot exceed the length of 16 chars';
-    else if (usernameInput.value.length < 3) error.textContent = 'username should be of minimum 3 chars';
-    else if (/[^a-zA-Z0-9]/.test(usernameInput.value)) error.textContent = 'username cannot contain symbols or spaces';
-    else if (passwordInput.value.length < 8) error.textContent = 'password should atleast be 8 chars long';
-    else if (usernameTaken) error.textContent = 'that username is taken';
-    else if (emailTaken) error.textContent = 'that email is taken';
-    else if (passwordInput.value !== repeatPasswordInput.value) error.textContent = 'passwords do not match';
+    if (usernameInput.value.length > 16) error.textContent = 'Username cannot exceed the length of 16 chars';
+    else if (usernameInput.value.length < 3) error.textContent = 'Username should be of minimum 3 chars';
+    else if (/[^a-zA-Z0-9]/.test(usernameInput.value)) error.textContent = 'Username cannot contain symbols or spaces';
+    else if (passwordInput.value.length < 8) error.textContent = 'Password should at least be 8 chars long';
+    else if (usernameTaken) error.textContent = 'That username is taken';
+    else if (emailTaken) error.textContent = 'That email is taken';
+    else if (passwordInput.value !== repeatPasswordInput.value) error.textContent = 'Passwords do not match';
     else {
-        error.textContent = 'creating your account...';
+        error.textContent = 'Creating your account...';
         error.style.color = 'slateblue';
 
         btn.classList.add('disabled');
@@ -192,9 +191,13 @@ async function handleSignup() {
     }
 }
 
+async function handleForgot() {
+    // TODO: implement this function
+}
+
 async function verifyUser(details) {
     const acc = details;
-    const code = Math.floor(Math.random() * (999999 - 100000 + 1)) + 999999;
+    const code = Math.floor(Math.random() * (900000)) + 999999;
 
     const req = await fetch(`/api/verify`, {
         method: 'POST',
