@@ -25,21 +25,21 @@ module.exports = (io) => {
         socket.emit('loadInfo', account);
 
         socket.on('change', async data => {
-
+            
             const accounts = await db.get('accounts') || [];
             const existing = accounts.find(a => a.user_token === data.token);
 
             const account = await db.get(`user_${existing.user_id}`);
-            accounts.filter(a => a.user_token === data.token);
+            const updated = accounts.filter(a => a.user_token !== data.token);
 
             existing[data.key] = data.value;
             account[data.key] = data.value;
 
-            accounts.push(existing);
-            await db.set('accounts', accounts);
-
+            updated.push(existing);
+            
+            await db.set('accounts', updated);
             await db.set(`user_${existing.user_id}`, account);
-        })
+        });
     });
 };
 
