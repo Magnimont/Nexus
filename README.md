@@ -33,7 +33,7 @@ Follow these easy steps to quickly set up your own Nexus instance/server.
 git clone https://github.com/NoErrorStudio/Nexus.git
 ```
 
-#### 2.Install dependencies:
+2.Install dependencies:
 
 ```shell
 cd Nexus
