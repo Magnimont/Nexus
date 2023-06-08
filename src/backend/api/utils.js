@@ -113,11 +113,11 @@ router.post('/verify', async (req, res) => {
             to: req.body.email,
             subject: 'Verify your account',
             html: `
-      <h1>Greetings, ${req.body.username}!</h1>
-      <p>Thank you for signing up. Your verification code is:</p>
-      <h2>${req.body.code}</h2>
-      <p>Please enter this code to verify your account. <b>If you did not request this code, you can safely ignore this email.</b></p>
-      `
+            <h1>Greetings, ${req.body.username}!</h1>
+            <p>Thank you for signing up. Your verification code is:</p>
+            <h2>${req.body.code}</h2>
+            <p>Please enter this code to verify your account. <b>If you did not request this code, you can safely ignore this email.</b></p>
+            `
         });
 
         res.send({ done: true });

@@ -16,6 +16,11 @@ router.get('/privacypolicy', (req, res) => {
     res.render('privacypolicy.ejs');
 })
 
+/* License */
+router.get('/license', (req, res) => {
+    res.render('license.ejs');
+})
+
 module.exports = {
     route: '/',
     router: router

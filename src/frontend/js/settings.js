@@ -14,6 +14,12 @@ Array.from(themes).forEach(theme => {
     localStorage.setItem('theme', `${theme.id}`);
     parentOpt.classList.add('picked');
 
+    const desktopApp = localStorage.getItem('desktopApp')
+    if (desktopApp){
+      document.querySelector('#desktopAppRestart').showModal();
+      return
+    }
+
     setTheme();
     removeOtherDivSelections(theme);
   });
