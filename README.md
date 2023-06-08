@@ -25,37 +25,35 @@ Before running Nexus locally, make sure you have the following:
 ---
 
 ## Getting Started 🚀
-Follow these easy steps to quickly set up your own NexCord instance/server.
+Follow these easy steps to quickly set up your own Nexus instance/server.
 
 #### 1.Clone the repository:
 
 ```shell
-git clone https://github.com/NoErrorStudio/NexCord.git
+git clone https://github.com/NoErrorStudio/Nexus.git
 ```
 
 2.Install dependencies:
 
-   ```bash
-    cd Nexus
-    npm install
-   ```
+```shell
+cd Nexus
+npm install
+```
 
 #### 3.Configure the application:
 
 Update the database configuration in `config/database.js`.
 Customize other settings in `config/config.js` if needed.
-Change the indicated variables in `settings.js` too.
 In the `.env.example` file change all variables to whatever you want
 and change the filename to `.env`.
 
 #### 4.Start the server:
 
+```shell
+npm start
+```
 
-=======
-   ```bash
-   npm start
-   ```
-5.Open your browser and visit `http://localhost:3000` to access Nexus.
+#### 5.Open your browser and visit `http://localhost:3000` to access Nexus.
 
 ---
 
@@ -70,13 +68,14 @@ We are working on providing easy deployment options for Nexus on public hosting 
 We welcome contributions from the community! If you'd like to contribute to Nexus, please follow these guidelines:
 
 - Fork the repository.
-- Create a new branch: `git checkout -b feature/your-feature`.
+- Create a new branch: `git checkout -b feature/<your-feature>`.
 - Make your changes and commit them: `git commit -m 'Add some feature'`.
-- Push the changes to your branch: `git push origin feature/your-feature`.
+- Push the changes to your branch: `git push origin feature/<your-feature>`.
 - Submit a pull request.
 
-=======
-### Goals for Nexus ⭐🍴
+---
+
+## Goals for Nexus ⭐🍴
 
 Our goals for Nexus are:
 

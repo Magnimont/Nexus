@@ -1,9 +1,13 @@
 require('dotenv').config();
 
+if (!process.env.MONGODB){
+    throw "You need to provide a mongodb URI as `MONGODB` environment variable";
+}
+
 module.exports = {
 
-    /* Owner Secret, to do serious http requests (change this to your own) */
-    ownerSecret: 'h8hjbsY8inCIncdk.Jvhanc8bji8k.i8uknfofMajd09x',
+    /* Owner Secret, to do serious http requests */
+    ownerSecret: process.env.OWNERSECRET,
 
     /* Nodemailer Email and password */
     auth: {
@@ -11,6 +15,6 @@ module.exports = {
         pass: process.env.SMTP_PASS
     },
 
-    /* Mongodb connection string (change this to your own) */
-    mongoUri: 'mongodb+srv://grvhxckz:grviscool@dcord.hg1icc2.mongodb.net/?retryWrites=true&w=majority'
+    /* Mongodb connection string */
+    mongoUri: process.env.MONGODB
 };
