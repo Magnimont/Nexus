@@ -15,7 +15,6 @@ Nexus is an open-source chatting app inspired by Discord, designed to provide a 
 - Custom Themes 🌈
 
 ---
-
 ## Prerequisites 📋
 
 Before running Nexus locally, make sure you have the following:
