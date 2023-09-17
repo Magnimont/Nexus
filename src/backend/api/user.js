@@ -143,6 +143,7 @@ router.delete('/friendship', async (req, res) => {
     }
   }
 });
+
 /* Edit Profile Images */
 router.post('/img/:tag/:image', upload.single('image'), async (req, res) => {
   const authorized = await authCheck(req.headers);
@@ -200,19 +201,3 @@ module.exports = {
   route: '/api/users',
   router: router
 };
-
-
-function genUserToken(body) {
-  const createdAt = body.created_at;
-  const timeNow = Date.now();
-
-  const combinedTime = createdAt * timeNow;
-
-  const eCreatedAt = Buffer.from(`${createdAt}`).toString('base64');
-  const eCreds = Buffer.from(`${combinedTime}`).toString('base64');
-
-  const eRandomStuff = Buffer.from(`${combinedTime - createdAt}`).toString('base64');
-  const token = `${eCreatedAt}.${eCreds}.${eRandomStuff}`.replace(/=/g, '');
-
-  return token;
-}

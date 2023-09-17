@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alerts</title>
 
-    <link rel="stylesheet" href="/css/home.css" type="text/css">
-    <link rel="stylesheet" href="/css/default.css" type="text/css">
-  </head>
-  <body>
-    <h1>This page is still under development.</h1>
-    <h3>Click <a href="/app">here</a> to go back to the main page.</h3>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="../img/nexus.png" type="image/x-icon">
+  <title>Nexus - Alerts</title>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css">
+  <link rel="stylesheet" href="../css/app.css" type="text/css">
+  <link rel="stylesheet" href="../css/default.css" type="text/css">
+  <link rel="stylesheet" href="../css/partials/profile.css" type="text/css">
+  <link rel="stylesheet" href="../css/partials/profileFriends.css" type="text/css">
+  <link rel="stylesheet" href="../css/alerts.css" type="text/css">
+
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="../js/partials/slider.js"></script>
+  <script defer src="../js/partials/theme.js"></script>
+  <script defer src="../js/app.js"></script>
+  <script defer src="../js/default.js"></script>
+</head>
+
+<body>
+<div id="notification-area"></div>
+
+<div class="container" style="position:absolute;">
+
+  <div class="hero-navbar">
+    <%- include('./partials/navbar.ejs') %>
+  </div>
+
+  <div class="notif-container">
+    <ol id="notifs" class="notifs">
+      <!--<li class="notif">
+        <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="profile picture">
+        <div class="notif-text">
+          <div class="notif-text header">
+            <h3 class="notif-text header title">Denied Friend Request</h3>
+            <p class="notif-text header time">14/06/2023 16:56</p>
+          </div>
+          <p>You denied <strong>Discord</strong>'s friend request.</p>
+        </div>
+      </li>
+      <li class="notif">
+        <img src="https://cdn.discordapp.com/avatars/532177714203852800/a_691856e7546902a68524ca1dc67f17e5.gif?size=1024" alt="profile picture">
+        <div class="notif-text">
+          <div class="notif-text header">
+            <h3 class="notif-text header title">New Friend</h3>
+            <p class="notif-text header time">14/06/2023 18:03</p>
+          </div>
+          <p><strong>Saizuo</strong> accepted your friend request.</p>
+        </div>
+      </li>
+      <li class="notif">
+        <img src="../img/nexus.png" alt="profile picture">
+        <div class="notif-text">
+          <div class="notif-text header">
+            <h3 class="notif-text header title">New Friend</h3>
+            <p class="notif-text header time">15/06/2023 09:25</p>
+          </div>
+          <p><strong>Nexus</strong> accepted your friend request.</p>
+        </div>
+      </li>-->
+      <h4 style="background:rgba(200, 200, 200, 0.75);border-radius:10px;color:black;padding:1em;">No older notifications to show.</h4>
+    </ol>
+  </div>
+</div>
+<script type="module" defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>

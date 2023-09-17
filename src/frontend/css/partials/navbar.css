@@ -10,7 +10,7 @@
     height: 3rem;
     width: 3rem;
   
-    background: var(--bg-lightest);
+    background: rgba(0, 0, 0, 0.1);
     margin-top: 0.3rem;
   
     display: flex;
@@ -24,6 +24,10 @@
   }
   
   .navbar div:hover {
+    background: var(--bg-medium);
+  }
+
+  .navbar div.selected {
     background: var(--bg-medium);
   }
   

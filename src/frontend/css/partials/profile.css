@@ -1,285 +1,282 @@
 .profile-section * {
-    animation: fade 0.5s ease-in-out;
-  }
-  
-  div.menu-header {
-    width: 100%;
-    height: 4rem;
-  
-    background: var(--bg-lightest);
-    margin-bottom: 1rem;
-  }
-  
-  button.hamburger {
-    height: 4rem;
-    width: 4rem;
-  
-    background: none;
-    border: none;
-  
-    border-radius: 0.3rem;
-    cursor: pointer;
-  
-    border-top-right-radius: 0.6rem;
-    border-bottom-right-radius: 0.6rem;
-  }
-  
-  button.hamburger ion-icon {
-    color: var(--fg-light);
-  
-    height: 2rem;
-    width: 2rem;
-  }
-  
-  .profile-section {
-    flex-grow: 1;
-    background: var(--bg-lightest);
-  
-    overflow-y: auto;
-    display: flex;
+  animation: fade 0.5s ease-in-out;
+}
 
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .profile-parent {
-    height: 100%;
-    width: 40rem;
+div.menu-header {
+  width: 100%;
+  height: 4rem;
 
-    max-width: 90%;
-  
-    overflow-y: auto;
-    overflow-x: hidden;
-  
-    display: flex;
-    flex-direction: column;
-  
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  div.profile-banner {
-    min-height: 15rem;
-    width: 100%;
-  
-    max-height: 20rem;
-    position: relative;
-  
-    background-size: cover;
-    background-position: center;
+  background: var(--bg-lightest);
+  margin-bottom: 1rem;
+}
 
-    background-repeat: no-repeat;
-  
-    border-top-left-radius: 0.8rem;
-    border-top-right-radius: 0.8rem;
-  }
-  
-  div.profile-banner button {
-    position: absolute;
-    display: flex;
-  
-    align-items: center;
-    justify-content: center;
-  
-    top: 1rem;
-    right: 1rem;
-  
-    height: 3.5rem;
-    width: 3.5rem;
-  
-    border-radius: 1.75rem;
-    background: var(--fg-light);
-  
-    border: none;
-    opacity: 0.5;
-  
-    cursor: pointer;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  div.profile-banner button:hover {
-    opacity: 1;
-  }
-  
-  div.profile-banner button ion-icon {
-    height: 1.5rem;
-    width: 1.5rem;
-  
-    color: var(--bg-darkest);
-  }
-  
-  div.profile-info-parent {
-    width: 100%;
-    padding: 0.5rem;
-  
-    display: flex;
-    box-shadow: 0 -3rem 2rem var(--bg-lightest);
-  
-    z-index: 1;
-  }
-  
-  div.profile-name-wrapper {
-    display: flex;
-    flex-direction: column;
-    max-width: 10rem;
-  }
-  
-  div.profile-pic {
-    height: 10rem;
-    width: 10rem;
-  
-    border-radius: 5rem;
-    margin-top: -4rem;
-  
-    box-shadow: 0 -1rem 2rem var(--bg-lightest);
-    box-sizing: border-box;
-  
-    padding: 0.25rem;
-    position: relative;
-  
-    margin-right: 1.5rem;
-    z-index: 1;
-  }
-  
-  div.profile-pic button {
-    height: 2.5rem;
-    width: 2.5rem;
-  
-    border-radius: 1.25rem;
-    background: #444;
-  
-    border: none;
-    cursor: pointer;
-  
-    position: absolute;
-    display: flex;
-  
-    align-items: center;
-    justify-content: center;
-  
-    right: 0;
-    bottom: 0.8rem;
-  
-    transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
-  }
-  
-  div.profile-pic button:hover {
-    transform: translateX(-2px);
-    background: var(--bg-medium);
-  }
-  
-  div.profile-pic button ion-icon {
-    height: 1.5rem;
-    width: 1.5rem;
-  
-    color: var(--fg-light);
-  }
-  
-  div.profile-name-wrapper > input {
-    height: 2rem;
-    width: auto;
-  
-    background: none;
-    border: none;
-  
-    color: var(--fg-light);
-    border-bottom: 1px solid var(--fg-light);
-  }
-  
-  div.profile-name-wrapper > input.disabled-input {
-    pointer-events: none;
-    user-select: none;
-  
-    border-bottom: none;
-  }
-  
-  button.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  
-    user-select: none;
-  }
-  
-  input#username-input {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  input#usertag-input {
-    font-size: 1rem;
-  }
-  
-  div.profile-edit-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  div.profile-parent h4 {
-    display: flex;
-    align-items: center;
-  }
-  
-  div.profile-edit-wrapper button,
-  div.user-bio-wrapper button {
-    height: 2rem;
-    width: 2rem;
-  
-    background: none;
-    border: none;
-  
-    display: flex;
-    cursor: pointer;
-  
-    align-items: center;
-    justify-content: center;
-  
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  div.profile-edit-wrapper button:hover,
-  div.user-bio-wrapper button:hover {
-    transform: translateY(-2px);
-  }
-  
-  div.profile-edit-wrapper button ion-icon,
-  div.user-bio-wrapper button ion-icon {
-    color: var(--fg-light);
-  }
-  
-  .user-bio-wrapper {
-    max-width: 80%;
-    padding: 0.5rem;
-  
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .user-bio-wrapper h4 {
-    color: var(--fg-light);
-    opacity: 0.8;
-  }
-  
-  .user-bio-wrapper textarea {
-    width: 20rem;
-    height: 5rem;
-  
-    max-width: 60%;
-    overflow-y: auto;
-  
-    background: var(--bg-medium);
-    border: none;
-  
-    resize: none;
-    margin-left: 0.5rem;
-  
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-  
-    font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
-    color: var(--fg-dark);
-    pointer-events: none;
-  
-    opacity: 0.8;
-  }
+button.hamburger {
+  height: 4rem;
+  width: 4rem;
+
+  background: none;
+  border: none;
+
+  border-radius: 0.3rem;
+  cursor: pointer;
+
+  border-top-right-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+}
+
+button.hamburger ion-icon {
+  color: var(--fg-light);
+
+  height: 2rem;
+  width: 2rem;
+}
+
+.profile-section {
+  flex-grow: 1;
+  background: var(--bg-lightest);
+
+  overflow-y: auto;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-parent {
+  height: 100%;
+  width: 40rem;
+
+  max-width: 90%;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.profile-banner {
+  min-height: 15rem;
+  width: 100%;
+
+  max-height: 20rem;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+}
+
+div.profile-banner button {
+  position: absolute;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  top: 1rem;
+  right: 1rem;
+
+  height: 3.5rem;
+  width: 3.5rem;
+
+  border-radius: 1.75rem;
+  background: var(--fg-light);
+
+  border: none;
+  opacity: 0.5;
+
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+div.profile-banner button:hover {
+  opacity: 1;
+}
+
+div.profile-banner button ion-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+
+  color: var(--bg-darkest);
+}
+
+div.profile-info-parent {
+  width: 104%;
+  padding: 0.5rem;
+  padding-left: 10%;
+  display: flex;
+  box-shadow: 0 -3rem 2rem var(--bg-lightest);
+  z-index: 1;
+  align-self: center;
+}
+
+div.profile-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
+}
+
+div.profile-pic {
+  height: 10rem;
+  width: 10rem;
+
+  border-radius: 5rem;
+  margin-top: -4.8rem;
+
+  box-sizing: border-box;
+
+  padding: 0.25rem;
+  position: relative;
+
+  margin-right: 1.5rem;
+  z-index: 1;
+}
+
+div.profile-pic button {
+  height: 2.5rem;
+  width: 2.5rem;
+
+  border-radius: 1.25rem;
+  background: #444;
+
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  right: 0;
+  bottom: 0.8rem;
+
+  transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
+}
+
+div.profile-pic button:hover {
+  transform: translateX(-2px);
+  background: var(--bg-medium);
+}
+
+div.profile-pic button ion-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+
+  color: var(--fg-light);
+}
+
+div.profile-name-wrapper>input {
+  height: 2rem;
+  width: auto;
+
+  background: none;
+  border: none;
+
+  color: var(--fg-light);
+  border-bottom: 1px solid var(--fg-light);
+}
+
+div.profile-name-wrapper>input.disabled-input {
+  pointer-events: none;
+  user-select: none;
+
+  border-bottom: none;
+}
+
+button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  user-select: none;
+}
+
+input#username-input {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+input#usertag-input {
+  font-size: 1rem;
+}
+
+div.profile-edit-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+div.profile-parent h4 {
+  display: flex;
+  align-items: center;
+}
+
+div.profile-edit-wrapper button,
+div.user-bio-wrapper button {
+  height: 2rem;
+  width: 2rem;
+
+  background: none;
+  border: none;
+
+  display: flex;
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+div.profile-edit-wrapper button:hover,
+div.user-bio-wrapper button:hover {
+  transform: translateY(-2px);
+}
+
+div.profile-edit-wrapper button ion-icon,
+div.user-bio-wrapper button ion-icon {
+  color: var(--fg-light);
+}
+
+.user-bio-wrapper {
+  max-width: 80%;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.user-bio-wrapper h4 {
+  color: var(--fg-light);
+  opacity: 0.8;
+}
+
+.user-bio-wrapper textarea {
+  width: 20rem;
+  height: 5rem;
+
+  max-width: 60%;
+  overflow-y: auto;
+
+  background: var(--bg-medium);
+  border: none;
+
+  resize: none;
+  margin-left: 0.5rem;
+
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  color: var(--fg-dark);
+  pointer-events: none;
+
+  opacity: 0.8;
+}

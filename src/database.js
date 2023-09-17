@@ -8,7 +8,7 @@ const { mongoUri } = require('./settings.js');
 const db = new Database(mongoUri);
 
 db.connect().then(() => {
-    console.log('[!]; Database ready');
+    console.log('[!]; Database Connected');
 });
 
 module.exports = db;

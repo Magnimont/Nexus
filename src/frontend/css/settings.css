@@ -7,6 +7,7 @@ html, body {
 
 .container {
     display: flex;
+    background: linear-gradient(to right, var(--bg-darkest), var(--bg-lightest));
 
     height: 100%;
     width: 100%;
@@ -16,9 +17,7 @@ html, body {
     color: var(--fg-light);
     flex-grow: 1;
 
-    background: var(--bg-lightest);
     padding: 1rem;
-
     overflow-y: auto;
 }
 
@@ -55,6 +54,7 @@ html, body {
 .light-theme-wrapper,
 .crimson-theme-wrapper,
 .azure-theme-wrapper,
+.synth-theme-wrapper,
 .forest-theme-wrapper {
     height: 6rem;
     width: 6rem;
@@ -73,6 +73,7 @@ html, body {
 .light-theme-wrapper:hover,
 .crimson-theme-wrapper:hover,
 .azure-theme-wrapper:hover,
+.synth-theme-wrapper:hover,
 .forest-theme-wrapper:hover {
     transform: translateY(-0.35rem);
 }
@@ -91,7 +92,7 @@ html, body {
 }
 
 .crimson-theme-circle {
-    background: linear-gradient(65deg, orangered, crimson);
+    background: linear-gradient(65deg, #740b20, crimson);
 }
 
 .azure-theme-circle {
@@ -102,6 +103,10 @@ html, body {
     background: linear-gradient(65deg, darkgreen, forestgreen)
 }
 
+.synth-theme-circle {
+    background: linear-gradient(65deg, #3D0066, #C800FF)
+}
+
 .theme-circle {
     height: 3.5rem;
     width: 3.5rem;
@@ -110,15 +115,17 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
-.app-msg-s-header {
+.app-msg-s-header, .app-msg-a-header {
     display: flex;
     align-items: center;
 
     margin-left: 1rem;
     cursor: pointer;
+
+    margin-bottom: 1rem;
 }
 
-.app-msg-s-header button {
+.app-msg-s-header button, .app-msg-a-header button {
     height: 1.5rem;
     width: 1.5rem;
 
@@ -135,7 +142,7 @@ html, body {
     justify-content: center;
 }
 
-.app-msg-s-header p {
+.app-msg-s-header p, .app-msg-a-header p {
     margin-bottom: 0;
     margin-top: 0;
 }
