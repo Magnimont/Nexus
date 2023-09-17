@@ -1,19 +1,19 @@
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #333;
+  background-color: var(--bg-lightest);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #666;
+  background-color: var(--bg-medium);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #888;
+  background-color: var(--bg-darkest);
 }
 
 * {
@@ -21,3 +21,243 @@
   -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
   outline: none !important;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: var(--fg-light);
+  background: var(--bg-lightest);
+}
+
+::selection {
+  color: var(--fg-light);
+  background: var(--bg-lightest);
+}
+
+.nodrag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+
+/* In-app notifalertications */
+:root {
+  --notifalert-success : rgba(118, 189, 87, 1);
+  --notifalert-error   : rgba(214, 45, 48, 1);
+  --notifalert-warning : rgba(238, 146, 19, 1);
+  --notifalert-info    : rgba(63, 175, 239, 1);
+}
+
+#notification-area {
+  position:fixed;
+  top:5em;
+  right:1dvw;
+  width:300px;
+  display:flex;
+  flex-direction:column-reverse;
+  align-content:center;
+  flex-wrap:nowrap;
+  justify-content:flex-end;
+  color: currentColor;
+  z-index: 9999;
+}
+
+.notifalert,
+.notifalert * {
+  margin     : 0;
+  padding    : 0;
+}
+
+.notifalert {
+  font-size        : 16px;
+  position         : relative;
+  z-index          : 9999;
+  left             : 0;
+  display          : flex;
+  overflow         : hidden;
+  align-items      : center;
+  justify-content  : space-between;
+  max-width        : 300px;
+  min-height       : auto;
+  margin-bottom    : 1dvh;
+  padding          : 8px;
+  transition       : left .5s ease-in;
+  opacity          : 1;
+  border-radius    : 8px;
+  background-color : rgba(255, 255, 255, 1);
+  box-shadow       : 0 5px 5px -1px rgba(115, 111, 110, 0.1);
+}
+
+.notifalert:before {
+  position         : absolute;
+  z-index          : -1;
+  top              : 0;
+  left             : 0;
+  display          : block;
+  width            : 100%;
+  height           : 100%;
+  content          : '';
+  pointer-events   : none;
+  opacity          : .15;
+  background-color : currentColor
+}
+
+.notifalert__info {
+  display         : flex;
+  align-items     : center;
+  flex-shrink     : 0;
+  justify-content : center;
+  width           : 20px;
+  height          : 20px;
+  margin-right    : 8px;
+}
+
+.notifalert__message {
+  font-size    : inherit;
+  flex-grow    : 1;
+  margin-right : 16px;
+  color        : inherit;
+}
+
+.notifalert__close {
+  font-weight      : 900;
+  line-height      : inherit;
+  position         : relative;
+  z-index          : 1;
+  display          : flex;
+  overflow         : hidden;
+  align-items      : center;
+  flex-shrink      : 0;
+  justify-content  : center;
+  width            : 20px;
+  height           : 20px;
+  cursor           : pointer;
+  color            : inherit;
+  border           : none;
+  border-radius    : 8px;
+  background-color : rgba(255, 255, 255, 0);
+}
+
+.notifalert__close:after {
+  position         : absolute;
+  z-index          : -1;
+  top              : 0;
+  left             : 0;
+  display          : block;
+  width            : 100%;
+  height           : 100%;
+  content          : '';
+  opacity          : 0;
+  border           : 1px solid currentColor;
+  background-color : currentColor;
+}
+
+.notifalert__close:hover:after {
+  opacity : .25;
+}
+
+.notifalert__progress {
+  position      : absolute;
+  bottom        : 0;
+  left          : 0;
+  width         : 100%;
+  height        : 3px;
+  color         : inherit;
+  border        : none;
+  border-radius : 24px;
+}
+
+.notifalert__progress::-webkit-progress-value {
+  transition       : all .5s linear;
+  border-radius    : 100vw;
+  background-color : currentColor;
+}
+
+.notifalert__progress::-webkit-progress-bar {
+  border-radius    : 100vw;
+  background-color : transparent;
+}
+
+.notifalert__progress::-moz-progress-bar {
+  border-radius    : 100vw;
+  background-color : transparent;
+}
+
+.notifalert__close:hover {
+  opacity : .85;
+}
+
+.notifalert-success {
+  color : var(--notifalert-success);
+}
+
+.notifalert-success svg {
+  fill : var(--notifalert-success);
+}
+
+.notifalert-error {
+  color : var(--notifalert-error);
+}
+
+.notifalert-error svg {
+  fill : var(--notifalert-error);
+}
+
+.notifalert-warning {
+  color : var(--notifalert-warning);
+}
+
+.notifalert-warning svg {
+  fill : var(--notifalert-warning);
+}
+
+.notifalert-info {
+  color : var(--notifalert-info);
+}
+
+.notifalert-info svg {
+  fill : var(--notifalert-info);
+}
+
+.notifalert-is-open {
+  animation-name            : notifalertIn;
+  animation-duration        : .5s;
+  animation-timing-function : ease;
+}
+
+.notifalert-is-closed {
+  left       : 200%;
+  transition : left .5s ease-out;
+  opacity    : 1;
+}
+
+@keyframes notifalertIn {
+  0% {
+    left : 100%
+  }
+  to {
+    left : 0;
+  }
+}
+
+/* End of in-app notifalertications */

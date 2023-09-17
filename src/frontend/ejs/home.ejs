@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="shortcut icon" href="../img/nexus.png" type="image/x-icon">
+  <link href="https://kit.fontawesome.com/78e8b4e005.js" crossorigin="anonymous" as="script">
+  <meta name="keywords" content="chat, app, nexus, noerrorstudio, discord, open-source">
+  <meta name="description" content="Nexus is an easy-to-use fast and powerful web chat app.">
+  <meta name="image" content="https://cdn.discordapp.com/attachments/841712516685234186/1118922691395727360/nexus.png">
+  <meta name="thumbnail" content="https://cdn.discordapp.com/attachments/841712516685234186/1118922691395727360/nexus.png">
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/841712516685234186/1118922691395727360/nexus.png">
+  <meta name="author" content="jvh">
+  <title>Nexus</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <img class="nondrag" alt="menu icon" src="../img/menuIcon.svg" width="20px" height="20px" style="max-width: 20px !important;">
+  </button>
+  <img class="nondrag" alt="site logo" style="cursor: pointer;" onclick="window.location.href='/'" src="../img/nexus.png" width="50" height="50">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/app">App</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/noerrorstudio/nexus-desktop/releases" target="_blank">Download</a>
+      </li>
+      <li class="nav-item" style="position:absolute;right:1.5rem;">
+        <a class="nav-link" href="https://github.com/noerrorstudio/nexus" target="_blank">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div id="notification-area"></div>
 
-    <link rel="stylesheet" href="/css/home.css" type="text/css">
-    <link rel="stylesheet" href="/css/default.css" type="text/css">
-  </head>
-  <body>
-    <h3>This page will be constructed soon. Redirecting you to the app</h3>
-    <script>
-      setTimeout(() => {
-        window.location.href = '/app';
-      }, 2000);
-    </script>
-  </body>
+
+<div class="heading" style="display:flex; flex-direction: column; text-align: center; align-content: center; align-items: center;">
+  <h1 class="display-5 title">Nexus</h1>
+  <br />
+  <p class="subtitle">
+    Nexus is an open-source chatting app inspired by Discord, designed to
+    provide a modern, feature-rich, and community-driven communication platform.
+    It is built with HTML, JavaScript, CSS, and Node.js.
+  </p>
+  <!--    <a class="btn btn-primary btn-lg" href="{{ url_for('invite') }}" target="_blank" role="button">Invite Me!</a>-->
+  <a class="btn btn-secondary btn-lg" href="/discord" style="font-size:0.75rem !important;" target="_blank" role="button">Discord Server</a>
+  <br />
+  <a class="neon-button" style="font-size:1.25rem !important;" role="button" href="/app">Open App</a>
+  <!--    <a class="neon-button support" target="_blank" role="button">Support Server</a>-->
+</div>
+
+<div class="footer">
+  <div class="bot-footer" style="font-size: 10px;">
+    <img src="../img/nexus.png" alt="footer bot logo" width="22" class="nondrag"><br />
+    Copyright © jvh (NoError Studio) - 2023
+    <br />
+    <a href="/privacypolicy" style="color:inherit">Privacy Policy</a> | <a href="/license" style="color:inherit">License</a>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="../js/now-ui-kit.min.js"></script>
+<script src="../js/default.js"></script>
+</body>
 </html>

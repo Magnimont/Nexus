@@ -1,21 +1,26 @@
-setCookie()
-    .then(async () => {
-        const loginButton = document.querySelector('button.login-btn');
+const loginButton = document.querySelector('button.login-btn');
+const account_socket = io('/account');
 
-        loginButton.addEventListener('click', async () => {
-            const id = loginButton.id;
+loginButton.addEventListener('click', async () => {
+    const id = loginButton.id;
 
-            if (id === 'login') await handleLogin();
-            else if (id === 'signup') await handleSignup();
-            else if (id === 'forgot') await handleForgot();
-        });
+    if (id === 'login') await handleLogin();
+    else if (id === 'signup') await handleSignup();
+    else if (id === 'forgot') await handleForgot();
+});
 
-        const forgotLink = document.querySelector('p.forgot-link');
-        const methodLink = document.querySelector('p.method-link');
+document.addEventListener('keypress', (ev) => {
+    if (ev.key === 'Enter'){
+        loginButton.click()
+    }
+})
 
-        forgotLink.addEventListener('click', () => buildMethod('forgot', loginButton));
-        methodLink.addEventListener('click', () => buildMethod(methodLink.id, loginButton));
-    });
+const forgotLink = document.querySelector('p.forgot-link');
+const methodLink = document.querySelector('p.method-link');
+
+forgotLink.addEventListener('click', () => buildMethod('forgot', loginButton));
+methodLink.addEventListener('click', () => buildMethod(methodLink.id, loginButton));
+
 
 function buildMethod(method, btn) {
     const usernameInput = document.querySelector('.username-div input');
@@ -52,7 +57,7 @@ function buildMethod(method, btn) {
         passwordInput.parentNode.classList.remove('hidden');
 
         heading.textContent = 'Login';
-        subheading.textContent = 'Enter your account details to log in';
+        subheading.textContent = 'Enter your account details to log in.';
 
         btn.id = 'login';
         const p = document.querySelector('p.method-link');
@@ -80,8 +85,10 @@ function buildMethod(method, btn) {
         passwordInput.setAttribute('required', '');
         passwordInput.parentNode.classList.remove('hidden');
 
+        document.getElementById('curp').autocomplete = 'new-password';
+
         heading.textContent = 'Signup';
-        subheading.textContent = 'Let\'s create an account';
+        subheading.textContent = 'Let\'s create an account.';
 
         btn.id = 'signup';
         const p = document.querySelector('p.method-link');
@@ -110,7 +117,7 @@ function buildMethod(method, btn) {
         passwordInput.parentNode.classList.add('hidden');
 
         heading.textContent = 'Forgot Password';
-        subheading.textContent = 'Get your password on your account email';
+        subheading.textContent = 'We\'ll send you an email containing your current password. Make sure no other person is looking at your screen!';
 
         btn.id = 'forgot';
     }
@@ -135,7 +142,7 @@ function buildMethod(method, btn) {
         passwordInput.parentNode.classList.add('hidden');
 
         heading.textContent = 'Email Verification';
-        subheading.textContent = 'Enter the code to verify your account';
+        subheading.textContent = 'Enter the code to verify and activate your account.';
     }
 }
 
@@ -149,13 +156,15 @@ async function handleLogin() {
     const error = document.querySelector('p.err-login');
     if (emailTaken && passTaken) {
 
-        const req = await fetch(`/api/token/${emailInput.value}`);
-        const res = await req.json();
+        account_socket.emit('tokenOf', emailInput.value);
+        account_socket.on('token', res => {
 
-        if (res.token) localStorage.setItem('token', res.token);
-        else error.textContent = 'An error has occurred while trying to log you in...';
-
-        window.location.href = '/app';
+            if (res) {
+                localStorage.setItem('token', res);
+                window.location.href = '/app';
+            }
+            else error.textContent = 'An error has occurred while trying to log you in...';
+        });
     }
     else error.textContent = 'Email or password is invalid';
 }
@@ -192,26 +201,36 @@ async function handleSignup() {
 }
 
 async function handleForgot() {
-    // TODO: implement this function
+    const forgotPasswordInput = document.querySelector('.forgot-password-div input');
+    const taken = await isTaken('email', forgotPasswordInput.value);
+
+    const error = document.querySelector('p.err-login');
+    error.style.color = 'orangered';
+
+    error.textContent = '';
+
+    if (!taken) {
+        error.textContent = 'That email is not linked with any account. Fill in a correct one.'
+    } else {
+        account_socket.emit('forgotPass', { email: forgotPasswordInput.value });
+        
+        error.style.color = 'lime';
+        error.textContent = 'Email has been sent. Please check inbox or spam folder.';
+
+        buildMethod('login');
+    }
 }
 
 async function verifyUser(details) {
     const acc = details;
     const code = Math.floor(Math.random() * (900000)) + 999999;
 
-    const req = await fetch(`/api/verify`, {
-        method: 'POST',
-        body: JSON.stringify({
-            code: code,
-            username: acc.user_tag,
-            email: acc.email
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
+    account_socket.emit('verify', {
+        code: code,
+        username: acc.user_tag,
+        email: acc.email
     });
 
-    const res = await req.json();
     const codeInput = document.querySelector('.acc-verification-div input');
 
     codeInput.parentNode.classList.remove('hidden');
@@ -222,6 +241,27 @@ async function verifyUser(details) {
 
     buildMethod('verify');
     codeInput.parentNode.style.display = 'block';
+    codeInput.setAttribute('placeholder', 'Loading...');
+    codeInput.setAttribute('disabled', '');
+    codeInput.style.cursor = 'not-allowed';
+    account_socket.on('signup-error', async data => {
+        if (data === null){
+            codeInput.setAttribute('placeholder', 'Enter 7-digit code');
+            codeInput.removeAttribute('disabled');
+            codeInput.style.cursor = 'default';
+        } else {
+            new Alert({
+                type: 'error',
+                message: 'Something went wrong!',
+                expires: false,
+                withProgress: false,
+                info: false
+            });
+            const error = document.querySelector('p.err-login');
+            error.textContent = 'Something went wrong!';
+            error.style.color = 'orangered';
+        }
+    });
 
     document.querySelector('div.links-div').style.display = 'none';
 
@@ -232,36 +272,27 @@ async function verifyUser(details) {
 
     loginButton.addEventListener('click', async () => {
         if (codeInput.value == code) {
-            
-            const req = await fetch('/api/users', {
-                method: 'POST',
-                body: JSON.stringify({
-                    created_at: Date.now(),
-                    user_tag: acc.user_tag,
-                    password: acc.password,
-                    email: acc.email
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+
+            account_socket.emit('create', {
+                created_at: Date.now(),
+                user_tag: acc.user_tag,
+                password: acc.password,
+                email: acc.email
             });
 
-            const res = await req.json();
-            localStorage.setItem('token', res.token);
+            account_socket.on('success', (res) => {
 
-            window.location.href = '/app';
+                localStorage.setItem('token', res.token);
+                window.location.href = '/app';
+
+            });
         }
     })
 }
 
-async function setCookie() {
-    const req = await fetch('/api/cookie');
-    return await req.json();
-}
-
-async function isTaken (key, value) {
-    const req = await fetch('/api/taken', { 
-        method: 'POST', 
+async function isTaken(key, value) {
+    const req = await fetch('/api/taken', {
+        method: 'POST',
         body: JSON.stringify({
             key: key,
             value: value

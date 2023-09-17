@@ -1,28 +1,65 @@
 <div class="friends-div-parent">
-    <link rel="stylesheet" href="/css/partials/friends.css" type="text/css">
-  
-    <div class="friends flex-navbar dynamic-menu">
-      
-      <div class="search">
-        <ion-icon name="search-outline"></ion-icon>
-        <input type="text" placeholder="Search...">
-      </div>
-  
-      <div class="manage friends-main-div friends-section-btn" onclick="toggle('friends-section-btn')">
-        <ion-icon name="happy-outline"></ion-icon>
-        <h3>Friends</h3>
-       </div>
-  
-       <div class="profile profile-section-btn" onclick="toggle('profile-section-btn')">
-        <ion-icon name="person-outline"></ion-icon>
-        <h3>Profile</h3>
-       </div>
-  
-      <div class="dms-header">
-        <h4>Direct Messages</h4>
-      </div>
-  
-      <div class="friends-list">
+  <link rel="stylesheet" href="/css/partials/friends.css" type="text/css">
+
+  <style>
+    div.red-circle {
+      padding: 0.25rem;
+      border-radius: 1rem;
+      background: var(--bg-darkest);
+      color: var(--fg-light);
+      height: 1.25rem;
+      width: 1.25rem;
+      max-width: 3rem;
+      margin-left: auto;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div.hidden-alert {
+      display: none;
+    }
+
+    div.add-dm ion-icon {
+      margin-left: 0;
+    }
+
+    div.add-dm {
+      cursor: pointer;
+    }
+  </style>
+
+  <div class="friends flex-navbar dynamic-menu">
+
+    <div class="search">
+      <ion-icon name="search-outline"></ion-icon>
+      <input type="text" placeholder="Search..." class="noselect">
+    </div>
+
+    <div class="manage friends-main-div friends-section-btn" onclick="toggle('friends-section-btn')">
+      <ion-icon name="happy-outline"></ion-icon>
+      <h3 class="noselect">Friends</h3>
+
+      <div class="red-circle alert-hidden">
+        <p style="margin: auto;">0</p>
       </div>
     </div>
+
+    <div class="profile profile-section-btn" onclick="toggle('profile-section-btn')">
+      <ion-icon name="person-outline"></ion-icon>
+      <h3 class="noselect">Profile</h3>
+    </div>
+
+    <div class="dms-header">
+      <h4 class="noselect">Direct Messages</h4>
+
+      <div class="add-dm" style="margin-right: 8px;">
+        <ion-icon name="add-outline" style="margin-left: 0;"></ion-icon>
+      </div>
+    </div>
+
+    <div class="friends-list">
+    </div>
   </div>
+</div>

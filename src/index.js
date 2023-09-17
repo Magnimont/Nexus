@@ -41,14 +41,14 @@ app.get('*', function (req, res){
     return;
   }
   res.type('txt').send('404 - Not Found');
-})
+});
 
 db.on('ready', () => {
   server.listen(port, () => {
 
-    const _address = `${server.address()["address"]}:${server.address()["port"]} (${server.address()["family"]})`;
-    console.log("server started: http://localhost:"+server.address()["port"].toString());
-    console.log("listening to: ", _address);
+    const _address = `${server.address()['address']}:${server.address()["port"]} (${server.address()["family"]})`;
+    console.log('server started: http://localhost:' + server.address()["port"].toString());
+    console.log('listening to: ', _address);
     require('./handlers/socket.js')(io);
 
   });

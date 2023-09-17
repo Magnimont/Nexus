@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App | Settings</title>
+    <link rel="shortcut icon" href="../img/nexus.png" type="image/x-icon">
+    <title>Nexus - Settings</title>
 
-    <link rel="stylesheet" href="/css/default.css" type="text/css">
-    <link rel="stylesheet" href="/css/settings.css" type="text/css">
-    <link rel="stylesheet" href="/css/app.css" type="text/css">
-    <link rel="stylesheet" href="/css/theme.css" type="text/css">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/settings.css" type="text/css">
+    <link rel="stylesheet" href="../css/app.css" type="text/css">
+    <link rel="stylesheet" href="../css/theme.css" type="text/css">
 
     <script defer src="/socket.io/socket.io.js"></script>
-    <script defer src="/js/settings.js"></script>
-
+    <script defer src="../js/settings.js"></script>
+    <script defer src="../js/default.js"></script>
     <style>
         ion-icon {
             color: var(--fg-light);
@@ -21,13 +22,11 @@
     </style>
   </head>
   <body>
+  <div id="notification-area"></div>
     <div class="container">
         <%- include('./partials/navbar.ejs') %>
 
         <div class="settings-section">
-            <dialog id="desktopAppRestart" style="border-radius:15px;text-align:center;justify-content:center;align-items:center;">
-                <p>You need to restart the app in order for these changes to take effect.</p>
-            </dialog>
             <div class="settings-app">
                 <h2>App Settings</h2>
                 <p>General app settings</p>
@@ -42,17 +41,32 @@
 
                         <div class="dark-theme-wrapper">
                             <div class="dark-theme-circle theme-circle" id="dark"></div>
-                            <span>Dark</span>
+                            <span>Night</span>
                         </div>
 
                         <div class="light-theme-wrapper">
                             <div class="light-theme-circle theme-circle" id="light"></div>
-                            <span>Light</span>
+                            <span>Day</span>
                         </div>
 
                         <div class="azure-theme-wrapper">
                             <div class="azure-theme-circle theme-circle" id="azure"></div>
                             <span>Azure</span>
+                        </div>
+
+                        <div class="crimson-theme-wrapper">
+                            <div class="crimson-theme-circle theme-circle" id="crimson"></div>
+                            <span>Crimson</span>
+                        </div>
+                        
+                        <div class="forest-theme-wrapper">
+                            <div class="forest-theme-circle theme-circle" id="forest"></div>
+                            <span>Forest</span>
+                        </div>
+
+                        <div class="synth-theme-wrapper">
+                            <div class="synth-theme-circle theme-circle" id="synth"></div>
+                            <span>Synthwave</span>
                         </div>
                     </div>
                 </div>
@@ -63,7 +77,12 @@
 
                     <div class="app-msgs-options">
                         <div class="app-msg-s-header">
-                            <button></button> <p>Play sound on message receive?</p>
+                            <button></button>
+                            <p>Play sound on message receive?</p>
+                        </div>
+                        <div class="app-msg-a-header">
+                            <button></button>
+                            <p>Get notifications from browser?</p>
                         </div>
                     </div>
                 </div>

@@ -12,65 +12,69 @@ Nexus is an open-source chatting app inspired by Discord, designed to provide a 
 - Direct messaging between users 📩
 - User profiles with avatars and banners 🙋‍♂️🖼️
 - Emojis and reactions (Coming Soon) 😄👍
-- Custom Themes 🌈
+- Wide variety of different Themes 🌈
+- ...
 
 ---
+
 ## Prerequisites 📋
 
 Before running Nexus locally, make sure you have the following:
 
-- [Node.js](https://nodejs.org/en/download/) installed on your machine.
+- [Node.js](https://nodejs.org/en/download/) (18.x) installed on your machine.
 
 ---
 
 ## Getting Started 🚀
 Follow these easy steps to quickly set up your own Nexus instance/server.
 
-#### 1.Clone the repository:
+#### 1. Clone the repository:
 
 ```shell
 git clone https://github.com/NoErrorStudio/Nexus.git
 ```
 
-2.Install dependencies:
+#### 2. Install dependencies:
 
 ```shell
 cd Nexus
 npm install
 ```
 
-#### 3.Configure the application:
+#### 3. Configure the application:
 
-Update the database configuration in `config/database.js`.
-Customize other settings in `config/config.js` if needed.
 In the `.env.example` file change all variables to whatever you want
 and change the filename to `.env`.
 
-#### 4.Start the server:
+#### 4. Start the server:
 
 ```shell
 npm start
 ```
-
-#### 5.Open your browser and visit `http://localhost:3000` to access Nexus.
+Open your browser and visit `http://localhost:3000` to access Nexus.
 
 ---
 
 ## Public Hosting (Coming Soon) 🌐
 
-We are working on providing easy deployment options for Nexus on public hosting platforms such as Replit and Vercel. Stay tuned for updates!
+We are working on providing easy deployment options for Nexus on public hosting platforms such as Replit. Stay tuned for updates!
 
 ---
 
 ## Contributing 🤝
 
-We welcome contributions from the community! If you'd like to contribute to Nexus, please follow these guidelines:
+Feel free to make Pull Requests with new features, fixes or improvements.
+Follow the underneath steps to do so:
 
-- Fork the repository.
-- Create a new branch: `git checkout -b feature/<your-feature>`.
-- Make your changes and commit them: `git commit -m 'Add some feature'`.
-- Push the changes to your branch: `git push origin feature/<your-feature>`.
-- Submit a pull request.
+- Fork this repository
+- Create a new branch:
+    - New Feature: `git checkout -b feature/<your-feature>`
+    - Fix: `git checkout -b fix/<your-fix>`
+    - Improvement: `git checkout -b improvement/<your-improvement>`
+- Add your new necessary files: `git add .`
+- Commit your changes: `git commit -m "<commit message>"`
+- Push the changes to your branch: `git push origin <branch>/<your-branch-name>`
+- Submit a Pull Request
 
 ---
 
@@ -87,7 +91,7 @@ Help us achieve these goals by giving Nexus a star and sharing it with others!
 
 ## Authors 👨‍💻
 
-Nexus is developed by [Gaurav](https://discord.com/users/891214041391988757) and [Vikas Jha](https://discord.com/users/532177714203852800) from NoError Studios.
+Nexus is developed by [Gaurav](https://discord.com/users/891214041391988757), [Vikas Jha](https://discord.com/users/532177714203852800) and [jvherck](https://github.com/jvherck) from NoError Studios.
 
 ---
 
@@ -116,12 +120,12 @@ For any questions or inquiries, please reach out to our team at [contact@noerror
 
 ## Hiring and Custom Development 💼
 
-Looking for customized features or interested in hiring our team for a custom version of Nexus? or maybe a greator project? Visit [NoError Studios](https://www.noerrorstudios.com/) or contact us via [GitHub](https://github.com/Saizuo) for more information.
+Looking for customized features or interested in hiring our team for a custom version of Nexus? Or maybe a greater project? Visit [NoError Studios](https://www.noerrorstudios.com/) or contact us via [GitHub](https://github.com/Saizuo) for more information.
 
 ---
 
 ## Sponsorship 💖
 
-Consider sponsoring the Nexus project to support its ongoing development and maintenance. Your sponsorship helps us dedicate more time and resources to improving the app and adding new features. You can sponsor the project by clicking the "Sponsor" button on our [GitHub repository](https://github.com/noerrorstudios/Nexus).
+Consider sponsoring the Nexus project to support its ongoing development and maintenance. Your sponsorship helps us dedicate more time and resources to improving the app and adding new features. You can sponsor the project by clicking the "Sponsor" button on our [GitHub repository](https://github.com/noerrorstudio/Nexus).
 
 Enjoy chatting with Nexus! 😃

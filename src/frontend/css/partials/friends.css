@@ -3,7 +3,7 @@
     width: 18rem;
   
     max-width: 100%;
-    background: var(--bg-medium);
+        background: rgba(0, 0, 0, 0.09);
   
     padding-top: 1rem;
     overflow-y: auto;
@@ -61,12 +61,12 @@
   
   .friends div.manage:hover,
   div.profile:hover {
-    background: var(--bg-lightest);
+    background: var(--bg-darkest);
     cursor: pointer;
   }
   
   div.selected {
-    background: var(--bg-lightest);
+    background: var(--bg-darkest);
   }
   
   .friends div h3 {
@@ -187,12 +187,12 @@
   }
   
   .friend:hover {
-    background: var(--bg-lightest);
+    background: var(--bg-darkest);
     cursor: pointer;
   }
   
   .friend#selected {
-    background: var(--bg-lightest);
+    background: var(--bg-darkest);
   }
   
   @keyframes fade {

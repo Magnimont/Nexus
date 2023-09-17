@@ -8,9 +8,9 @@ const { auth } = require('./settings.js');
 
 /* SMTP settings for the app to be able to send mails */
 const transporter = mailer.createTransport({
-  host: process.env.SMTP_HOST,
+  host: process.env.SMTP_HOST || 'smtp-mail.outlook.com',
   secureConnection: (process.env.SMTP_PORT !== '587'),
-  port: process.env.SMTP_PORT,
+  port: process.env.SMTP_PORT || 587,
   tls: {
     ciphers: 'SSLv3',
   },

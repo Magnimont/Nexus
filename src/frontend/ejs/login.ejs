@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="shortcut icon" href="../img/nexus.png" type="image/x-icon">
+    <title>Nexus - Login</title>
 
-    <link rel="stylesheet" href="/css/login.css" type="text/css">
-    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
 
-    <script defer src="/js/login.js"></script>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="../js/login.js"></script>
+    <script defer src="../js/default.js"></script>
   </head>
   <body>
+  <div id="notification-area"></div>
     <div class="container">
       <form class="login-form">
         
@@ -21,32 +25,32 @@
         </div>
 
         <div class="username-div hidden">
-          <input placeholder="Username" required/>
+          <input placeholder="Username" type="text" required/>
           <p class="err-msg"></p>
         </div>
 
         <div class="email-div">
-          <input placeholder="Email" type="email"/>
+          <input placeholder="Email" type="email" required id="email" autocomplete="email"/>
           <p class="err-msg"></p>
         </div>
 
         <div class="password-div">
-          <input placeholder="Password" type="password" required/>
+          <input placeholder="Password" type="password" required id="curp" autocomplete="current-password"/>
           <p class="err-msg"></p>
         </div>
 
         <div class="repeat-password-div hidden">
-          <input placeholder="Repeat Password" type="password"/>
+          <input placeholder="Repeat Password" type="password" required id="repp" autocomplete="new-password"/>
           <p class="err-msg"></p>
         </div>
 
         <div class="forgot-password-div hidden">
-          <input placeholder="account email"/>
+          <input placeholder="Your email" type="email" required id="email" autocomplete="email"/>
           <p class="err-msg"></p>
         </div>
 
         <div class="acc-verification-div hidden">
-          <input placeholder="Enter 4-digit code"/>
+          <input placeholder="Enter 7-digit code" type="number" maxlength="7" required id="one-time-code" autocomplete="one-time-code"/>
           <p class="err-msg"></p>
         </div>
 

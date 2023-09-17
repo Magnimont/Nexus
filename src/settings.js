@@ -1,13 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({path: '../.env'});
 
-if (!process.env.MONGODB){
-    throw "You need to provide a mongodb URI as `MONGODB` environment variable";
-}
+if (!process.env.MONGODB){throw "You need to provide a MongoDB URI as environment variable."}
 
 module.exports = {
-
-    /* Owner Secret, to do serious http requests */
-    ownerSecret: process.env.OWNERSECRET,
 
     /* Nodemailer Email and password */
     auth: {
