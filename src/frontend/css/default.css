@@ -22,7 +22,8 @@
   outline: none !important;
 }
 
-::-moz-selection { /* Code for Firefox */
+/*
+::-moz-selection { !* Code for Firefox *!
   color: var(--fg-light);
   background: var(--bg-lightest);
 }
@@ -31,6 +32,7 @@
   color: var(--fg-light);
   background: var(--bg-lightest);
 }
+*/
 
 .nodrag {
   -webkit-user-drag: none;

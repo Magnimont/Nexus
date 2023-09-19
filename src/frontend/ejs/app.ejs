@@ -22,11 +22,13 @@
 </head>
 
 <body>
-<div id="notification-area"></div>
+  <div id="notification-area"></div>
+
   <div class="loading">
     <img src="../img/nexus.png" alt="logo">
     <h4>Nexus</h4>
   </div>
+
   <div class="container" style="position:absolute;">
 
     <div class="hero-navbar">
@@ -139,7 +141,7 @@
         </div>
 
         <div class="user-bio-wrapper">
-          <h4>Bio (soon)<button class="edit-bio-btn">
+          <h4 class="noselect">Bio (soon)<button class="edit-bio-btn">
               <ion-icon name="create-outline"></ion-icon>
             </button></h4>
           <textarea></textarea>
@@ -158,8 +160,8 @@
       <h2 class="profile-friends-section-heading"></h2>
 
       <div class="profile-add-friend-wrapper">
-        <h4>ADD FRIEND</h4>
-        <p>You can add friends by their tag.</p>
+        <h4 class="noselect">ADD FRIEND</h4>
+        <p class="noselect">You can add friends by their tag.</p>
 
         <div class="profile-add-friend-form">
           <input class="profile-add-friend-search">
@@ -169,12 +171,12 @@
 
       <p class="friend-error-notice"></p>
 
-      <h4>PENDING REQUESTS</h4>
-      <p class="pending-requests-info">Pending friend requests show up here.</p>
+      <h4 class="noselect">PENDING REQUESTS</h4>
+      <p class="pending-requests-info noselect">Pending friend requests show up here.</p>
       <div class="pending-requests-list"></div>
 
-      <h4>YOUR FRIENDS</h4>
-      <p class="friends-list-info">A list of people who are your friends on this app.</p>
+      <h4 class="noselect">YOUR FRIENDS</h4>
+      <p class="friends-list-info noselect">A list of people who are your friends on this app.</p>
       <div class="profile-friends-list-wrapper"></div>
 
     </div>
