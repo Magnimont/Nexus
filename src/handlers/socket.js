@@ -478,7 +478,7 @@ async function updatePresence(token) {
 
         setTimeout(async () => {
             await db.set(`status_${user.user_id}`, false);
-        }, 20000);
+        }, 10000);
     }
 }
 

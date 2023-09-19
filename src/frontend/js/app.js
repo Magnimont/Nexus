@@ -248,10 +248,11 @@ app.on('load', async data => {
         }
     }
 
+    document.querySelector(`div.friends-section-btn`)?.click();
+    // Selects the starting screen when going to /app. to get first friend use: `div.friends-list div#${friends[0]?.user_tag}`
+
     const loading = document.querySelector('div.loading');
     loading.classList.add('hidden');
-
-    document.querySelector(`div.friends-list div#${friends[0]?.user_tag}`)?.click();
 
     /* Handle Friends Tab */
     await setRequestsList(reqs);
