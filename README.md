@@ -17,6 +17,11 @@ Nexus is an open-source chatting app inspired by Discord, designed to provide a 
 
 ---
 
+## Changelogs 🪵
+Find the changelog here: https://github.com/NoErrorStudio/Nexus/blob/main/CHANGELOG.md
+
+---
+
 ## Prerequisites 📋
 
 Before running Nexus locally, make sure you have the following:
