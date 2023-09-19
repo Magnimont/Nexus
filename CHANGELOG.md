@@ -6,7 +6,7 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 # Changelog
 
-## Nexus v1 3.1.0 - Expected
+## 3.1.0 - Expected
 *Expected Update*
 
 ### New Features
@@ -14,7 +14,7 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 ---
 
-## Nexus v1 3.0.1 ([#9](https://github.com/NoErrorStudio/Nexus/pull/9))
+## 3.0.1 ([#9](https://github.com/NoErrorStudio/Nexus/pull/9))
 2023-09-19
 
 ### Fixes
@@ -23,7 +23,7 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 ---
 
-## Nexus v1 3.0.0 ([#5](https://github.com/NoErrorStudio/Nexus/pull/5))
+## 3.0.0 ([#5](https://github.com/NoErrorStudio/Nexus/pull/5))
 2023-09-17
 
 ### New Features
