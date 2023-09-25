@@ -115,7 +115,7 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
-.app-msg-s-header, .app-msg-a-header {
+.app-msg-s-header, .app-msg-a-header, .app-msg-t-header {
     display: flex;
     align-items: center;
 
@@ -125,7 +125,7 @@ html, body {
     margin-bottom: 1rem;
 }
 
-.app-msg-s-header button, .app-msg-a-header button {
+.app-msg-s-header button, .app-msg-a-header button, .app-msg-t-header button {
     height: 1.5rem;
     width: 1.5rem;
 
@@ -142,7 +142,7 @@ html, body {
     justify-content: center;
 }
 
-.app-msg-s-header p, .app-msg-a-header p {
+.app-msg-s-header p, .app-msg-a-header p, .app-msg-t-header p {
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -192,7 +192,7 @@ button.del-acc-btn {
     justify-content: flex-start;
     align-items: left;
 
-    margin-left: 4%;
+    margin-left: 1rem;
 }
 
 .edit-div input {
@@ -223,7 +223,6 @@ button.del-acc-btn {
     cursor: pointer;
 
     height: 2.5rem;
-    width: 2.5rem;
 
     transition: transform 0.4s ease-in-out;
 }
@@ -236,3 +235,5 @@ button.del-acc-btn {
     height: 1rem;
     width: 1rem;
 }
+
+

@@ -15,7 +15,7 @@ module.exports = (io) => {
         // MTY4NTEwNjQ4ODcxNg.Mi44Mzk1ODM4Nzg4NTAzMTU2ZSsyNA.Mi44Mzk1ODM4Nzg4NDg2MzA0ZSsyNA
 
         if (acc) socket.emit('load', acc);
-        else socket.emit('load', { err: true });
+        else socket.emit('load', {err: true});
 
         socket.on('friendAdd', async details => {
             const res = await friendAdd(details.from, details.to);
@@ -64,11 +64,11 @@ module.exports = (io) => {
 
         socket.on('msgSave', async (data, cf) => {
             // data = { from: user_tag, to: currentFriend, sent_at: (edit ? edit : messageId), text: msgInput.value, reference: ref };
-            if (data?.reference === null){
+            if (data?.reference === null) {
                 const sender = (await db.get('accounts')).find(a => a.user_tag === data.from);
                 const messages = await db.get(`messages_${sender.user_id}`) || [];
                 const edited_msg = messages.find(m => m.sent_at === data.sent_at);
-                if (edited_msg?.reference !== null){
+                if (edited_msg?.reference !== null) {
                     data.reference = edited_msg?.reference || null;
                 }
             }
@@ -123,15 +123,21 @@ module.exports = (io) => {
             const accounts = await db.get('accounts') || [];
             const exists = accounts.find(a => a.user_tag === data.user_tag);
 
-            if (exists) socket.emit('error', { err: 'The name is already taken' });
-            else if (exists && exists.email === req.body.email) socket.emit('error', { err: 'The email is taken' });
+            if (exists) socket.emit('error', {err: 'The name is already taken'});
+            else if (exists && exists.email === req.body.email) socket.emit('error', {err: 'The email is taken'});
 
             else {
                 const token = genUserToken(data);
                 const id = data.created_at;
 
                 const acc = data;
-                const object = { user_tag: acc.user_tag, email: acc.email, email: acc.email, password: acc.password, user_id: acc.created_at, user_token: token }
+                const object = {
+                    user_tag: acc.user_tag,
+                    email: acc.email,
+                    password: acc.password,
+                    user_id: acc.created_at,
+                    user_token: token
+                }
 
                 object.user_token = token;
                 await db.push('accounts', object);
@@ -143,16 +149,13 @@ module.exports = (io) => {
                 object.dms = [];
 
                 await db.set(`user_${id}`, object);
-                socket.emit('success', { created: true, token: object.user_token });
+                socket.emit('success', {created: true, token: object.user_token});
             }
         });
 
         socket.on('verify', async data => {
             try {
-                const { auth } = require('../settings.js');
-                const { mailer } = require('../nodemailer.js');
-
-                function mailCallback(...args){
+                function mailCallback(...args) {
                     socket.emit('signup-error', ...args);
                 }
 
@@ -169,17 +172,44 @@ module.exports = (io) => {
       <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
       `
                 }, mailCallback);
-            }
-            catch (e) {
+            } catch (e) {
                 console.log(e);
                 socket.emit('signup-error', {err: e.message});
             }
         });
 
-        socket.on('forgotPass', async data => {
-            const { auth } = require('../settings.js');
-            const { mailer } = require('../nodemailer.js');
+        // TODO: test socket endpoint for 2FA
+        socket.on('2fa', async data => {
+            if (data.method === 'email') {
+                try {
+                    function mailCallback(...args) {
+                        socket.emit('2fa-error', ...args);
+                    }
 
+                    await mailer.sendMail({
+                        from: `"Nexus" <${auth.user}>`,
+                        to: data.email,
+                        subject: '2FA Login Code',
+                        html: `
+                          <img src="https://cdn.discordapp.com/attachments/841712516685234186/1115681395117916293/nexus-logo.png" alt="logo" width="100px" height="100px">
+                          <h1>Greetings, ${data.username}!</h1>
+                          <p>Someone is trying to log in on your account. If this is you, here is the one-time code to login:</p>
+                          <h2>${data.code}</h2>
+                          <p>Please enter this code to log in to account. <b>If you did not request this code, change your password!</b></p>
+                          <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+                        `
+                    }, mailCallback);
+                } catch (e) {
+                    console.log(e);
+                    socket.emit('2fa-error', {err: e.message});
+                }
+            }
+            else {
+                socket.emit('2fa-error', {err: `"${data.type}" is not a valid 2FA type.`})
+            }
+        });
+
+        socket.on('forgotPass', async data => {
             const users = await db.get('accounts') || []
             const user = users.find(a => a.email === data.email);
 
@@ -207,6 +237,19 @@ module.exports = (io) => {
             exists ? socket.emit('token', exists.user_token) : socket.emit('token', null);
         });
 
+        socket.on('get2fa', async email => {
+            const accounts = await db.get('accounts') || [];
+            let exists;
+            if (email === null || email === undefined){
+                exists = accounts.find(a => a.token === token);
+            }
+            else {
+                exists = accounts.find(a => a.email === email);
+            }
+
+            exists ? socket.emit('get2fareturn', {enabled: exists.twofa_enabled, method: exists.twofa_method, user_tag: exists.user_tag}) : socket.emit('get2fareturn', {enabled: false, method: null, user_tag: null});
+        });
+
         socket.on('edit', async data => {
 
             const accounts = await db.get('accounts');
@@ -230,7 +273,9 @@ async function getDMs(self, friend) {
     const urMsgsArr = urMsgs.filter(m => m.to === me.user_id);
 
     const allMsgs = [...myMsgsArr, ...urMsgsArr];
-    allMsgs.sort((x, y) => { return x.sent_at - y.sent_at });
+    allMsgs.sort((x, y) => {
+        return x.sent_at - y.sent_at
+    });
 
     return allMsgs;
 }
@@ -246,7 +291,13 @@ async function saveMessage(data) {
     const exists = messages.find(m => m.sent_at == data.sent_at);
     if (exists) await db.set(`messages_${sender.user_id}`, messages.filter(m => m.sent_at != data.sent_at));
 
-    const msg = { from: sender.user_id, to: receiver.user_id, sent_at: data.sent_at, text: data.text, reference: data.reference };
+    const msg = {
+        from: sender.user_id,
+        to: receiver.user_id,
+        sent_at: data.sent_at,
+        text: data.text,
+        reference: data.reference
+    };
     await db.push(`messages_${sender.user_id}`, msg);
 
     const me = await db.get(`user_${sender.user_id}`);
@@ -291,8 +342,9 @@ async function loadAccount(token) {
 
             const banner = await db.get(`banner_${friends[x]}`);
 
-            if (friend) friendsRes.push({ user_tag: friend.user_tag, icon: icon, banner: banner });
-        };
+            if (friend) friendsRes.push({user_tag: friend.user_tag, icon: icon, banner: banner});
+        }
+
 
         const dmsRes = [];
         for (x = 0; x < dms.length; x++) {
@@ -302,14 +354,20 @@ async function loadAccount(token) {
 
             const banner = await db.get(`banner_${dms[x]}`);
 
-            if (dm) dmsRes.push({ user_tag: dm.user_tag, icon: icon, banner: banner });
+            if (dm) dmsRes.push({user_tag: dm.user_tag, icon: icon, banner: banner});
         }
 
         const userPfp = icon ? icon : 'https://i.pinimg.com/originals/1f/5a/30/1f5a309ca476474256c3a0049e3499fd.jpg';
         const userBanner = banner ? banner : 'https://th.bing.com/th/id/OIP.Ov3O4R-Kv-xvjZcJOtGnnAHaEK?pid=ImgDet&rs=1';
 
         return ({
-            friends: friendsRes, icon: userPfp, banner: userBanner, user_tag: acc.user_tag, reqs: requests, user_id: exists.user_id, dms: dmsRes
+            friends: friendsRes,
+            icon: userPfp,
+            banner: userBanner,
+            user_tag: acc.user_tag,
+            reqs: requests,
+            user_id: exists.user_id,
+            dms: dmsRes
         });
 
     } else return null;
@@ -355,8 +413,9 @@ async function friendAdd(token, tag) {
             const banner = await db.get(`banner_${f}`);
             const icon = await db.get(`icon_${f}`);
 
-            sFriends.push({ user_tag: acc.user_tag, banner: banner, icon: icon });
-        };
+            sFriends.push({user_tag: acc.user_tag, banner: banner, icon: icon});
+        }
+
 
         for (const f of receiverAcc.friends) {
             const acc = await db.get(`user_${f}`);
@@ -364,8 +423,9 @@ async function friendAdd(token, tag) {
             const banner = await db.get(`banner_${f}`);
             const icon = await db.get(`icon_${f}`);
 
-            rFriends.push({ user_tag: acc.user_tag, banner: banner, icon: icon });
-        };
+            rFriends.push({user_tag: acc.user_tag, banner: banner, icon: icon});
+        }
+
 
         return {
             type: 1, from: sender.user_tag, to: receiver.user_tag,
@@ -377,7 +437,7 @@ async function friendAdd(token, tag) {
         };
     } else {
 
-        pendingReqs.push({ s: sender.user_id, r: receiver.user_id });
+        pendingReqs.push({s: sender.user_id, r: receiver.user_id});
         await db.set('pendingRequests', pendingReqs);
 
         return {
@@ -385,7 +445,7 @@ async function friendAdd(token, tag) {
 
             for: [senderAcc.user_token, receiverAcc.user_token],
             reqs: {
-                req: { s: sender.user_id, r: receiver.user_id },
+                req: {s: sender.user_id, r: receiver.user_id},
                 del: false
             }
         };
@@ -417,7 +477,7 @@ async function friendRemove(token, tag) {
             type: 0, from: sender.user_tag, to: receiver.user_tag,
             for: [senderAcc.user_token, receiverAcc.user_token],
             reqs: {
-                req: { s: sender.user_id, r: receiver.user_id },
+                req: {s: sender.user_id, r: receiver.user_id},
                 del: true
             }
         };
@@ -444,8 +504,9 @@ async function friendRemove(token, tag) {
             const banner = await db.get(`banner_${f}`);
             const icon = await db.get(`icon_${f}`);
 
-            sFriends.push({ user_tag: acc.user_tag, banner: banner, icon: icon });
-        };
+            sFriends.push({user_tag: acc.user_tag, banner: banner, icon: icon});
+        }
+
 
         for (const f of receiverAcc.friends) {
             const acc = await db.get(`user_${f}`);
@@ -453,8 +514,9 @@ async function friendRemove(token, tag) {
             const banner = await db.get(`banner_${f}`);
             const icon = await db.get(`icon_${f}`);
 
-            rFriends.push({ user_tag: acc.user_tag, banner: banner, icon: icon });
-        };
+            rFriends.push({user_tag: acc.user_tag, banner: banner, icon: icon});
+        }
+
 
         return {
             type: 1, from: sender.user_tag, to: receiver.user_tag,
@@ -487,10 +549,9 @@ async function checkPresence(token) {
     const account = accounts.find(a => a.user_token === token);
     if (account) {
         const user = await db.get(`status_${account.user_id}`);
-        return { user_tag: account.user_tag, online: user };
-    }
-    else {
-        return { user_tag: null, online: null };
+        return {user_tag: account.user_tag, online: user};
+    } else {
+        return {user_tag: null, online: null};
     }
 }
 
