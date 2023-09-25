@@ -91,21 +91,21 @@ appMsgAlertHeader.addEventListener('click', x => {
 const sound = localStorage.getItem('msgSound');
 
 if (sound) {
-  soundbtn.classList.remove('ticked');
-  soundbtn.innerHTML = '';
-} else {
   soundbtn.classList.add('ticked');
   soundbtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon>';
+} else {
+  soundbtn.classList.remove('ticked');
+  soundbtn.innerHTML = '';
 }
 
 const alerts = localStorage.getItem('alerts');
 
-if (!alerts) {
-  alertbtn.classList.remove('ticked');
-  alertbtn.innerHTML = '';
-} else {
+if (alerts) {
   alertbtn.classList.add('ticked');
   alertbtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon>';
+} else {
+  alertbtn.classList.remove('ticked');
+  alertbtn.innerHTML = '';
 }
 
 const delAccBtn = document.querySelector('button.del-acc-btn');
@@ -127,6 +127,8 @@ accountIO.on('loadInfo', account => {
   valueChange(pwInput, document.querySelector('button.edit-pass-btn'), 'password', account, pwToggle);
   valueChange(emInput, document.querySelector('button.edit-email-btn'), 'email', account, emToggle);
 });
+
+// TODO: add possibility to change 2fa settings
 
 function valueToggle(input, button, details, method) {
   button.addEventListener('click', () => {
@@ -203,7 +205,7 @@ function valueChange(input, button, method, details, toggle) {
 }
 
 function delAcc () {
-  delAccBtn.textContent = 'Confirm!';
+  delAccBtn.textContent = 'Confirm Deletion!';
 
   delAccBtn.addEventListener('click', async () => {
     const req = await fetch(`/api/users/delete`, {
