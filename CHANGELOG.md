@@ -14,6 +14,22 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 ---
 
+## 3.0.3 ([#16](https://github.com/NoErrorStudio/Nexus/pull/16))
+2023-09-28
+
+### Fixed
+- Fixed new users not being able to sign up
+
+---
+
+## 3.0.2 ([#13](https://github.com/NoErrorStudio/Nexus/pull/13))
+2023-09-25
+
+### Added
+- 2FA email system backend, not yet configurable
+
+---
+
 ## 3.0.1 ([#9](https://github.com/NoErrorStudio/Nexus/pull/9))
 2023-09-19
 

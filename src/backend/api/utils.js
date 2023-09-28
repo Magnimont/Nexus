@@ -24,9 +24,8 @@ router.post('/taken', async (req, res) => {
 
     if (taken) res.json({ taken: true, id: taken.user_id });
     else {
-
         if (req.body.key === 'user_tag' && /[^a-zA-Z0-9]/.test(req.body.value)) res.json({ taken: true });
-        else res.json({ taken: null, id: taken?.user_id });
+        else res.json({ taken: false, id: taken?.user_id });
     }
 });
 
