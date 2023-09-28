@@ -37,7 +37,7 @@ function buildMethod(method, btn) {
     const heading = document.querySelector('.heading-div h2');
     const subheading = document.querySelector('.heading-div h4');
 
-    let currentMethod = 'login';
+    // let currentMethod = 'login';
 
     if (method === 'login') {
         usernameInput.removeAttribute('required');
@@ -177,8 +177,8 @@ async function handleLogin() {
     const emailInput = document.querySelector('.email-div input');
     const passwordInput = document.querySelector('.password-div input');
 
-    const emailTaken = await isTaken('email', emailInput.value).id;
-    const passTaken = await isTaken('password', passwordInput.value).id;
+    const emailTaken = (await isTaken('email', emailInput.value)).id;
+    const passTaken = (await isTaken('password', passwordInput.value)).id;
 
     const error = document.querySelector('p.err-login');
     if (emailTaken === passTaken) {
@@ -216,8 +216,8 @@ async function handleSignup() {
     const passwordInput = document.querySelector('.password-div input');
     const repeatPasswordInput = document.querySelector('.repeat-password-div input');
 
-    const usernameTaken = await isTaken('user_tag', usernameInput.value).taken;
-    const emailTaken = await isTaken('email', emailInput.value).taken;
+    const usernameTaken = (await isTaken('user_tag', usernameInput.value)).taken;
+    const emailTaken = (await isTaken('email', emailInput.value)).taken;
 
     const error = document.querySelector('p.err-login');
     error.style.color = 'orangered';
@@ -227,9 +227,9 @@ async function handleSignup() {
     if (usernameInput.value.length > 16) error.textContent = 'Username cannot exceed the length of 16 chars';
     else if (usernameInput.value.length < 3) error.textContent = 'Username should be of minimum 3 chars';
     else if (/[^a-zA-Z0-9]/.test(usernameInput.value)) error.textContent = 'Username cannot contain symbols or spaces';
-    else if (passwordInput.value.length < 8) error.textContent = 'Password should at least be 8 chars long';
     else if (usernameTaken) error.textContent = 'That username is taken';
     else if (emailTaken) error.textContent = 'That email is taken';
+    else if (passwordInput.value.length < 8) error.textContent = 'Password should at least be 8 chars long';
     else if (passwordInput.value !== repeatPasswordInput.value) error.textContent = 'Passwords do not match';
     else {
         error.textContent = 'Creating your account...';
@@ -242,7 +242,7 @@ async function handleSignup() {
 
 async function handleForgot() {
     const forgotPasswordInput = document.querySelector('.forgot-password-div input');
-    const taken = await isTaken('email', forgotPasswordInput.value).taken;
+    const taken = (await isTaken('email', forgotPasswordInput.value)).taken;
 
     const error = document.querySelector('p.err-login');
     error.style.color = 'orangered';
@@ -416,6 +416,5 @@ async function isTaken(key, value) {
             'Content-Type': 'application/json'
         }
     });
-
     return await req.json();
 }
