@@ -5,7 +5,6 @@ let alreadyHandling = false;
 
 loginButton.addEventListener('click', async () => {
     const id = loginButton.id;
-
     if (id === 'login') await handleLogin();
     else if (id === 'signup') await handleSignup();
     else if (id === 'forgot') await handleForgot();
@@ -236,6 +235,7 @@ async function handleSignup() {
         error.style.color = 'slateblue';
 
         btn.classList.add('disabled');
+        console.log("---\nVerifying...\n---")
         await verifyUser({ user_tag: usernameInput.value, email: emailInput.value, password: passwordInput.value });
     }
 }
@@ -262,6 +262,7 @@ async function handleForgot() {
 }
 
 async function verifyUser(details) {
+    document.querySelector('button.login-btn').id = 'verification';
     const acc = details;
     const code = Math.floor(Math.random() * (900000)) + 999999;
 
@@ -324,7 +325,6 @@ async function verifyUser(details) {
 
                 localStorage.setItem('token', res.token);
                 window.location.href = '/app';
-
             });
         }
     })
@@ -345,6 +345,7 @@ async function handle2fa(details) {
 
     codeInput.parentNode.classList.remove('hidden');
     const loginButton = document.querySelector('button.login-btn');
+    loginButton.id = 'verification';
 
     const err = document.querySelector('p.err-login');
     err.textContent = '';

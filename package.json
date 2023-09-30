@@ -1,11 +1,12 @@
 {
   "name": "nexus",
   "productName": "Nexus",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "author": "NoError Studio <support@noerror.studio>",
   "description": "Nexus is an open-source chatting app.",
   "homepage": "https://noerror.studio",
   "repository": "https://github.com/noerrorstudio/nexus",
+  "bugs": "https://github.com/noerrorstudio/nexus/issues",
   "license": "MIT License",
   "copyright": "Copyright © 2023 NoError Studio",
   "main": "./src/index.js",

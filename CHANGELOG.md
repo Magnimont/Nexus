@@ -14,6 +14,17 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 ---
 
+## 3.0.4 ([#17](https://github.com/NoErrorStudio/Nexus/pull/17))
+2023-09-30
+
+### Fixed
+- Fixed verification email being sent twice
+
+### Backend
+- Improved input and button behaviour for adding new friends
+
+---
+
 ## 3.0.3 ([#16](https://github.com/NoErrorStudio/Nexus/pull/16))
 2023-09-28
 

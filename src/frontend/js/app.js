@@ -269,26 +269,59 @@ app.on('load', async data => {
                     from: localStorage.getItem('token'),
                     to: inp.value
                 });
+                new Alert({
+                    type: 'success',
+                    message: 'Friend request sent!'
+                })
             }
 
-            inp.addEventListener('input', async () => {
+            inp.addEventListener('keyup', e => {
+                if ((/[^a-zA-Z0-9]/.test(inp.value)) || inp.value.length === 0) btn.classList.add('disabled');
+                else btn.classList.remove('disabled');
+
+                if (e.key === 'Enter'){
+                    btn.click();
+                }
+            });
+
+            btn.addEventListener('click', async () => {
+                btn.classList.add('disabled');
 
                 const exists = await isTaken('user_tag', inp.value);
                 const friendAlready = friends.find(f => f.user_tag === inp.value);
 
-                if (/[^a-zA-Z0-9]/.test(inp.value)) btn.classList.add('disabled');
-                else if (!exists) btn.classList.add('disabled');
-                else if (inp.value === user_tag) btn.classList.add('disabled');
-                else if (friendAlready) btn.classList.add('disabled');
-                else btn.classList.remove('disabled');
-            });
-
-            btn.addEventListener('click', async () => {
-
-                btn.classList.add('disabled');
-
-                await updatePendingReqs(inp.value);
-                inp.value = '';
+                if (/[^a-zA-Z0-9]/.test(inp.value)) {
+                    new Alert({
+                        type: 'error',
+                        message: 'Only alphanumeric characters are allowed.',
+                    });
+                }
+                else if (!exists) {
+                    new Alert({
+                        type: 'error',
+                        message: 'This user does not exist.',
+                    });
+                    btn.classList.remove('disabled')
+                }
+                else if (inp.value === user_tag) {
+                    new Alert({
+                        type: 'error',
+                        message: 'You can not add yourself as friend.',
+                    });
+                    btn.classList.remove('disabled')
+                }
+                else if (friendAlready) {
+                    new Alert({
+                        type: 'error',
+                        message: 'This user already is your friend.',
+                    });
+                    btn.classList.remove('disabled')
+                }
+                else {
+                    await updatePendingReqs(inp.value);
+                    inp.value = '';
+                    btn.classList.add('disabled');
+                }
             });
         }
 
@@ -297,7 +330,7 @@ app.on('load', async data => {
         const addFriendBtn = friendsSection.querySelector('div.profile-add-friend-form button');
         const addFriendInp = friendsSection.querySelector('div.profile-add-friend-form input');
 
-        addFriendBtn.classList.add('disabled');
+        // addFriendBtn.classList.add('disabled');
         manageFriendAdd(addFriendBtn, addFriendInp);
     }
 
