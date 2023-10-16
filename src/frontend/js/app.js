@@ -66,7 +66,6 @@ function convertRemToPixels(rem) {
 }
 
 app.on('load', async data => {
-
     if (data.err) window.location.href = '/login';
     else setInterval(() => { app.emit('joined', localStorage.getItem('token')) }, 250);
 

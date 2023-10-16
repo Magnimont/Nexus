@@ -257,7 +257,7 @@ async function handleForgot() {
         error.style.color = 'lime';
         error.textContent = 'Email has been sent. Please check inbox or spam folder.';
 
-        buildMethod('login');
+        buildMethod('login', loginButton);
     }
 }
 
@@ -280,7 +280,7 @@ async function verifyUser(details) {
     const err = document.querySelector('p.err-login');
     err.textContent = '';
 
-    buildMethod('verify');
+    buildMethod('verify', loginButton);
     codeInput.parentNode.style.display = 'block';
     codeInput.setAttribute('placeholder', 'Loading...');
     codeInput.setAttribute('disabled', '');
@@ -350,7 +350,7 @@ async function handle2fa(details) {
     const err = document.querySelector('p.err-login');
     err.textContent = '';
 
-    buildMethod('2fa-email');
+    buildMethod('2fa-email', loginButton);
     codeInput.parentNode.style.display = 'block';
     codeInput.setAttribute('placeholder', 'Loading...');
     codeInput.setAttribute('disabled', '');

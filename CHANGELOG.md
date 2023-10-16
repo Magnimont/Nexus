@@ -6,11 +6,17 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 # Changelog
 
-## 3.1.0 - Expected
-*Expected Update*
+## 3.1.0 ([#18](https://github.com/NoErrorStudio/Nexus/pull/18))
+2023-10-16
 
 ### New Features
 - 2FA: use e-mail as 2nd factor authentication ([#8](https://github.com/NoErrorStudio/Nexus/issues/8))
+
+### Improvements
+- Token will reset upon changing password ([#11](https://github.com/NoErrorStudio/Nexus/issues/11))
+
+### Backend
+- Added a new variable to `.env.example` called `PROTOCOL`, this should be either `http` or `https` depending on if your website has an SSL certificate (you can leave `URL` blank if you use protocol variable)
 
 ---
 

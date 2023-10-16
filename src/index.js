@@ -50,6 +50,5 @@ db.on('ready', () => {
     console.log('server started: http://localhost:' + server.address()["port"].toString());
     console.log('listening to: ', _address);
     require('./handlers/socket.js')(io);
-
   });
 });
