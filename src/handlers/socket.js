@@ -2,13 +2,16 @@ const db = require('../database.js');
 const {mailer} = require("../nodemailer");
 const {auth} = require("../settings");
 
+function getUrl(socket){
+    return (process.env.PROTOCOL || 'http')+'://'+socket.handshake.headers.host;
+}
+
 module.exports = (io) => {
 
     /* App Events */
     const app = io.of('/app');
 
     app.on('connection', async socket => {
-
         const token = socket.handshake.query.token;
         const acc = await loadAccount(`${token}`);
 
@@ -127,7 +130,7 @@ module.exports = (io) => {
       <p>Your password has been successfully changed.</p>
       <p><b>If you did not change your password, contact Nexus support as soon as possible!</b></p>
       <br />
-      <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+      <footer>This mail was sent by <a href="${process.env.URL || getUrl(socket)}">Nexus</a></footer>
       `
                 });
             }
@@ -188,7 +191,7 @@ module.exports = (io) => {
       <p>Thank you for signing up. Your verification code is:</p>
       <h2>${data.code}</h2>
       <p>Please enter this code to verify your account. <b>If you did not request this code, you can safely ignore this email.</b></p>
-      <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+      <footer>This mail was sent by <a href="${process.env.URL || getUrl(socket)}">Nexus</a></footer>
       `
                 }, mailCallback);
             } catch (e) {
@@ -215,7 +218,7 @@ module.exports = (io) => {
                           <p>Someone is trying to log in on your account. If this is you, here is the one-time code to login:</p>
                           <h2>${data.code}</h2>
                           <p>Please enter this code to log in to account. <b>If you did not request this code, change your password!</b></p>
-                          <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+                          <footer>This mail was sent by <a href="${process.env.URL || getUrl(socket)}">Nexus</a></footer>
                         `
                     }, mailCallback);
                 } catch (e) {
@@ -243,7 +246,7 @@ module.exports = (io) => {
                     <p>It seems like you forgot your account password. Don't worry, here's your password:</p>
                     <h4>${user.password}</h4>
                     <p>Now you can log in to your account <b>If you meant to reset your password, you can do so on the settings page.</b></p>
-                    <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+                    <footer>This mail was sent by <a href="${process.env.URL || getUrl(socket)}">Nexus</a></footer>
                 </body>
                 `
             });
