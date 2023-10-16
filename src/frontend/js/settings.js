@@ -114,7 +114,6 @@ const logoutBtn = document.querySelector('button.logout-btn');
 const accountIO = io('/account', { query: { token: localStorage.getItem('token') }});
 
 accountIO.on('loadInfo', account => {
-
   const pwInput = document.querySelector('input.password-input');
   const emInput = document.querySelector('input.email-input');
 
@@ -126,6 +125,33 @@ accountIO.on('loadInfo', account => {
 
   valueChange(pwInput, document.querySelector('button.edit-pass-btn'), 'password', account, pwToggle);
   valueChange(emInput, document.querySelector('button.edit-email-btn'), 'email', account, emToggle);
+
+
+
+  const appMsgTwofaHeader = document.querySelector('div.app-msg-t-header');
+  const twofabtn = appMsgTwofaHeader.querySelector('button');
+
+  appMsgTwofaHeader.addEventListener('click', x => {
+    if (account.twofa_enabled) {
+      accountIO.emit('change', {key: 'twofa_enabled', value: false, token: localStorage.getItem('token')});
+      setTimeout(() => {
+        window.location.reload();
+      }, 250);
+    } else {
+      accountIO.emit('change', {key: 'twofa_enabled', value: true, token: localStorage.getItem('token')});
+      setTimeout(() => {
+        window.location.reload();
+      }, 250);
+    }
+  });
+
+  if (account.twofa_enabled) {
+    twofabtn.classList.add('ticked');
+    twofabtn.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon>';
+  } else {
+    twofabtn.classList.remove('ticked');
+    twofabtn.innerHTML = '';
+  }
 });
 
 // TODO: add possibility to change 2fa settings
