@@ -82,10 +82,15 @@ router.post('/:tag/update', async (req, res) => {
 
         const account = await db.get(`user_${found.user_id}`);
         const changes = req.body.changes;
+        let psswdch = false;
 
         for (x = 0; x < changes.length; x++) {
             const {key, value} = changes[x];
             account[key] = value;
+            if (key === 'password'){
+                account['user_token'] = genUserToken(req.body);
+                psswdch = true;
+            }
         }
 
         await db.set(`user_${found.user_id}`, account);
@@ -95,7 +100,7 @@ router.post('/:tag/update', async (req, res) => {
         filtered.push(found);
 
         await db.set('accounts', filtered);
-        res.status(201).json({updated: true});
+        res.status(201).json({updated: true, token: (psswdch)?account['user_token']:undefined});
     }
 });
 

@@ -179,6 +179,10 @@ function valueChange(input, button, method, details, toggle) {
     } else {
       button.innerHTML = '<ion-icon name="create-outline"></ion-icon>';
       accountIO.emit('change', { key: method.toLowerCase(), value: input.value, token: localStorage.getItem('token') });
+      if (method.toLowerCase() === 'password'){
+        localStorage.removeItem('token');
+        window.location.href = '/app';
+      }
     }
   });
 

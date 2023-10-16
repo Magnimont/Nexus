@@ -113,6 +113,25 @@ module.exports = (io) => {
             existing[data.key] = data.value;
             account[data.key] = data.value;
 
+            if (data.key === 'password'){
+                const newToken = genUserToken({created_at: existing.created_at});
+                existing['user_token'] = newToken;
+                account['user_token'] = newToken;
+                await mailer.sendMail({
+                    from: `"Nexus" <${auth.user}>`,
+                    to: existing.email,
+                    subject: 'Password changed',
+                    html: `
+      <img src="https://cdn.discordapp.com/attachments/841712516685234186/1115681395117916293/nexus-logo.png" alt="logo" width="100px" height="100px">
+      <h1>Greetings, ${existing.user_tag}!</h1>
+      <p>Your password has been successfully changed.</p>
+      <p><b>If you did not change your password, contact Nexus support as soon as possible!</b></p>
+      <br />
+      <footer>This mail was sent by <a href="${process.env.URL || ''}">Nexus</a></footer>
+      `
+                });
+            }
+
             updated.push(existing);
 
             await db.set('accounts', updated);
