@@ -214,8 +214,15 @@ function valueChange(input, button, method, details, toggle) {
 
   input.addEventListener('input', async () => {
 
-    if (input.value.length >= 5)  {
-      const taken = await isTaken(method.toLowerCase(), input.value);
+    const inputLength = (method.toLowerCase() === 'password')?8:5;
+    if (input.value.length >= inputLength)  {
+      let taken;
+      if (method.toLowerCase() === 'password'){
+        taken = false;
+      }
+      else {
+        taken = await isTaken(method.toLowerCase(), input.value);
+      }
 
       if (taken) {
         button.style.pointerEvents = 'none';

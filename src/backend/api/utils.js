@@ -20,7 +20,9 @@ router.get('/id/:id', async (req, res) => {
 /* Check if something's taken */
 router.post('/taken', async (req, res) => {
     const accounts = await db.get('accounts') || [];
-    const taken = accounts.find(a => a[req.body.key] === req.body.value);
+    let taken = null;
+    if (req.body.user_id){taken = accounts.find(a => a[req.body.key] === req.body.value && a.user_id === req.body.user_id);}
+    else {taken = accounts.find(a => a[req.body.key] === req.body.value);}
 
     if (taken) res.json({ taken: true, id: taken.user_id });
     else {
