@@ -30,7 +30,7 @@ function buildMethod(method, btn) {
     const passwordInput = document.querySelector('.password-div input');
     const repeatPasswordInput = document.querySelector('.repeat-password-div input');
 
-    const forgotPasswordInput = document.querySelector('.forgot-password-div input');
+    // const forgotPasswordInput = document.querySelector('.forgot-password-div input');
     const verificationCodeInput = document.querySelector('.acc-verification-div input');
 
     const heading = document.querySelector('.heading-div h2');
@@ -45,8 +45,8 @@ function buildMethod(method, btn) {
         repeatPasswordInput.removeAttribute('required');
         repeatPasswordInput.parentNode.classList.add('hidden');
 
-        forgotPasswordInput.removeAttribute('required');
-        forgotPasswordInput.parentNode.classList.add('hidden');
+        /*forgotPasswordInput.removeAttribute('required');
+        forgotPasswordInput.parentNode.classList.add('hidden');*/
 
         verificationCodeInput.removeAttribute('required');
         verificationCodeInput.parentNode.classList.add('hidden');
@@ -74,8 +74,8 @@ function buildMethod(method, btn) {
         repeatPasswordInput.setAttribute('required', '');
         repeatPasswordInput.parentNode.classList.remove('hidden');
 
-        forgotPasswordInput.removeAttribute('required');
-        forgotPasswordInput.parentNode.classList.add('hidden');
+        /*forgotPasswordInput.removeAttribute('required');
+        forgotPasswordInput.parentNode.classList.add('hidden');*/
 
         verificationCodeInput.removeAttribute('required');
         verificationCodeInput.parentNode.classList.add('hidden');
@@ -105,14 +105,14 @@ function buildMethod(method, btn) {
         repeatPasswordInput.removeAttribute('required');
         repeatPasswordInput.parentNode.classList.add('hidden');
 
-        forgotPasswordInput.setAttribute('required', '');
-        forgotPasswordInput.parentNode.classList.remove('hidden');
+        /*forgotPasswordInput.setAttribute('required', '');
+        forgotPasswordInput.parentNode.classList.remove('hidden');*/
 
         verificationCodeInput.removeAttribute('required');
         verificationCodeInput.parentNode.classList.add('hidden');
 
-        emailInput.removeAttribute('required');
-        emailInput.parentNode.classList.add('hidden');
+        emailInput.setAttribute('required', '');
+        emailInput.parentNode.classList.remove('hidden');
 
         passwordInput.removeAttribute('required');
         passwordInput.parentNode.classList.add('hidden');
@@ -130,8 +130,8 @@ function buildMethod(method, btn) {
         repeatPasswordInput.removeAttribute('required');
         repeatPasswordInput.parentNode.classList.add('hidden');
 
-        forgotPasswordInput.removeAttribute('required', '');
-        forgotPasswordInput.parentNode.classList.add('hidden');
+        /*forgotPasswordInput.removeAttribute('required', '');
+        forgotPasswordInput.parentNode.classList.add('hidden');*/
 
         verificationCodeInput.setAttribute('required', '');
         verificationCodeInput.parentNode.classList.remove('hidden');
@@ -153,8 +153,8 @@ function buildMethod(method, btn) {
         repeatPasswordInput.removeAttribute('required');
         repeatPasswordInput.parentNode.classList.add('hidden');
 
-        forgotPasswordInput.removeAttribute('required', '');
-        forgotPasswordInput.parentNode.classList.add('hidden');
+        /*forgotPasswordInput.removeAttribute('required');
+        forgotPasswordInput.parentNode.classList.add('hidden');*/
 
         verificationCodeInput.setAttribute('required', '');
         verificationCodeInput.parentNode.classList.remove('hidden');
@@ -177,9 +177,10 @@ async function handleLogin() {
     const passwordInput = document.querySelector('.password-div input');
 
     const emailTaken = (await isTaken('email', emailInput.value)).id;
-    const passTaken = (await isTaken('password', passwordInput.value)).id;
+    const passTaken = (await isTaken('password', passwordInput.value, emailTaken)).id;
 
     const error = document.querySelector('p.err-login');
+    error.style.color = 'orangered';
     if (emailTaken === passTaken) {
         account_socket.emit('get2fa', emailInput.value);
         account_socket.on('get2fareturn', res => {
@@ -241,8 +242,8 @@ async function handleSignup() {
 }
 
 async function handleForgot() {
-    const forgotPasswordInput = document.querySelector('.forgot-password-div input');
-    const taken = (await isTaken('email', forgotPasswordInput.value)).taken;
+    const emailInput = document.querySelector('.email-div input');
+    const taken = (await isTaken('email', emailInput.value)).taken;
 
     const error = document.querySelector('p.err-login');
     error.style.color = 'orangered';
@@ -252,7 +253,7 @@ async function handleForgot() {
     if (!taken) {
         error.textContent = 'That email is not linked with any account. Fill in a correct one.'
     } else {
-        account_socket.emit('forgotPass', { email: forgotPasswordInput.value });
+        account_socket.emit('forgotPass', { email: emailInput.value });
         
         error.style.color = 'lime';
         error.textContent = 'Email has been sent. Please check inbox or spam folder.';
@@ -301,6 +302,7 @@ async function verifyUser(details) {
             const error = document.querySelector('p.err-login');
             error.textContent = 'Something went wrong!';
             error.style.color = 'orangered';
+            console.log(data);
         }
     });
 
@@ -406,12 +408,13 @@ async function handle2fa(details) {
     })
 }
 
-async function isTaken(key, value) {
+async function isTaken(key, value, user_id=null) {
     const req = await fetch('/api/taken', {
         method: 'POST',
         body: JSON.stringify({
             key: key,
-            value: value
+            value: value,
+            user_id: user_id
         }),
         headers: {
             'Content-Type': 'application/json'

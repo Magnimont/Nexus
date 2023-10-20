@@ -268,7 +268,6 @@ module.exports = (io) => {
             else {
                 exists = accounts.find(a => a.email === email);
             }
-
             exists ? socket.emit('get2fareturn', {enabled: exists.twofa_enabled, method: exists.twofa_method, user_tag: exists.user_tag}) : socket.emit('get2fareturn', {enabled: false, method: null, user_tag: null});
         });
 
@@ -288,17 +287,21 @@ async function getDMs(self, friend) {
     const me = accounts.find(a => a.user_tag === self);
     const you = accounts.find(a => a.user_tag === friend);
 
-    const myMsgs = await db.get(`messages_${me.user_id}`) || [];
-    const urMsgs = await db.get(`messages_${you.user_id}`) || [];
+    let allMsgs;
+    try {
+        const myMsgs = await db.get(`messages_${me.user_id}`) || [];
+        const urMsgs = await db.get(`messages_${you.user_id}`) || [];
+        const myMsgsArr = myMsgs.filter(m => m.to === you.user_id);
+        const urMsgsArr = urMsgs.filter(m => m.to === me.user_id);
 
-    const myMsgsArr = myMsgs.filter(m => m.to === you.user_id);
-    const urMsgsArr = urMsgs.filter(m => m.to === me.user_id);
-
-    const allMsgs = [...myMsgsArr, ...urMsgsArr];
-    allMsgs.sort((x, y) => {
-        return x.sent_at - y.sent_at
-    });
-
+        allMsgs = [...myMsgsArr, ...urMsgsArr];
+        allMsgs.sort((x, y) => {
+            return x.sent_at - y.sent_at
+        });
+    }
+    catch (e){
+        allMsgs = undefined;
+    }
     return allMsgs;
 }
 

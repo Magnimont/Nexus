@@ -712,27 +712,36 @@ app.on('load', async data => {
                 sockets[friend].on('load', (arr) => {
                     messages.innerHTML = '';
 
-                    for (let x = 0; x < arr.length; x++) {
-                        const message = document.createElement('div');
+                    if (arr){
+                        for (let x = 0; x < arr.length; x++) {
+                            const message = document.createElement('div');
 
-                        message.classList.add('msg');
-                        message.id = arr[x].sent_at;
+                            message.classList.add('msg');
+                            message.id = arr[x].sent_at;
 
-                        const dynamicId = arr[x].from == user_id
-                            ? ('self')
-                            : ('them');
+                            const dynamicId = arr[x].from == user_id
+                                ? ('self')
+                                : ('them');
 
-                        message.classList.add(dynamicId);
+                            message.classList.add(dynamicId);
 
-                        const content = document.createElement('p');
-                        content.textContent = arr[x].text;
+                            const content = document.createElement('p');
+                            content.textContent = arr[x].text;
 
-                        message.appendChild(content);
+                            message.appendChild(content);
 
-                        if (arr[x].reference) {
-                            loadMessagesAfterSending(arr, arr[x].reference, dynamicId, message);
-                        } else messages.appendChild(message);
-                    };
+                            if (arr[x].reference) {
+                                loadMessagesAfterSending(arr, arr[x].reference, dynamicId, message);
+                            } else messages.appendChild(message);
+                        };
+                    }
+                    else {
+                        const bannedBlockedIndicator = document.getElementsByClassName('banned-blocked-indicator')[0];
+                        const msgManager = document.getElementsByClassName('message-manager')[0];
+                        bannedBlockedIndicator.style.display = 'flex';
+                        bannedBlockedIndicator.style.width = '100%';
+                        msgManager.style.display = "none";
+                    }
 
                     messages.scrollTop = messages.scrollHeight;
                 });

@@ -607,7 +607,7 @@ div.manage-message-ctx button.del {
   color: orangered;
 }
 
-div.replying-indicator, div.editing-indicator {
+div.replying-indicator, div.editing-indicator, div.banned-blocked-indicator {
   height: 2rem;
   width: 20rem;
 
@@ -625,13 +625,23 @@ div.replying-indicator, div.editing-indicator {
 
   align-self: center;
   animation: wipeup 0.4s ease-in-out;
+
+  border-radius: 5px;
 }
 
-div.replying-indicator a, div.editing-indicator a {
+div.replying-indicator a, div.editing-indicator a, div.banned-blocked-indicator p {
   margin-left: 5%;
   text-decoration: none;
 
   color: var(--fg-dark);
+}
+
+div.banned-blocked-indicator {
+  margin: 2em;
+}
+
+div.banned-blocked-indicator p {
+  margin-left: 1% !important;
 }
 
 /*div.replying-indicator div.cancel, div.deleting-indicator */div.cancel {
