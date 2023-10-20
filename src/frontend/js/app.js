@@ -14,8 +14,9 @@ let stop = false;
  * @param requireInteraction Whether the user needs to interact with the notification before it disappears
  * @param actions The possible actions (buttons) on the notification
  * @param silent Whether to deliver the notification silently or not
+ * @param url The URL to go to when clicking the notification
  */
-function sendNotification(title, body, image, icon, timestamp, renotify, requireInteraction, actions, silent) {
+function sendNotification(title, body, image, icon, timestamp, renotify, requireInteraction, actions, silent, url) {
     const alerts = localStorage.getItem('alerts');
 
     if (alerts) {
@@ -30,9 +31,13 @@ function sendNotification(title, body, image, icon, timestamp, renotify, require
                 actions: actions,
                 silent: silent
             });
+            notif.onclick = (event) => {
+                event.preventDefault();
+                window.location.href = url;
+            }
         } else if (Notification.permission == 'default') {
             Notification.requestPermission();
-            sendNotification(title, body, image, icon, timestamp, renotify, requireInteraction, actions, silent);
+            sendNotification(title, body, image, icon, timestamp, renotify, requireInteraction, actions, silent, url);
         }
     }
 }
@@ -780,7 +785,7 @@ app.on('load', async data => {
 
                         // Send a browser notif if they have alerts on and if they're the receiving user
                         if (localStorage.getItem('alerts') === 'true' && msg.to === user_tag) {
-                            sendNotification(msg.from, msg.text, undefined, 'https://cdn.discordapp.com/attachments/841712516685234186/1115681395117916293/nexus-logo.png', undefined, undefined, undefined, undefined, undefined)
+                            sendNotification(msg.from, msg.text, undefined, 'https://cdn.discordapp.com/attachments/841712516685234186/1115681395117916293/nexus-logo.png', undefined, undefined, undefined, undefined, undefined, ('http://localhost:42320/app'))
                         }
                         if (msg.from !== user_tag && msg.from !== friend_tag) {
                             const notification = new Audio('../audio/msg.mp3');

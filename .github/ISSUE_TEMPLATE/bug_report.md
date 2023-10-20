@@ -32,7 +32,8 @@ If applicable, add screenshots to help explain your problem.
  - Device: [e.g. iPhone15]
  - OS: [e.g. iOS17.0]
  - Browser: [e.g. Chrome, Safari]
- - Version: [e.g. 3.0.0]
+ - Browser version: [e.g. Version 1.59.120 Chromium: 118.0.5993.88 (Official Build)  (64-bit)]
+ - Nexus version: [e.g. 3.1.0]
 
 ### Additional context
 Add any other context about the problem here.
