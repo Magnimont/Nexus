@@ -26,6 +26,11 @@ router.get('/license', (req, res) => {
     res.render('license.ejs');
 })
 
+/* Discord */
+router.get('/discord', (req, res) => {
+    res.redirect(process.env.DISCORDINVITE || '/404');
+})
+
 module.exports = {
     route: '/',
     router: router

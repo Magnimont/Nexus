@@ -241,7 +241,8 @@ function valueChange(input, button, method, details, toggle) {
   });
 }
 
-function delAcc () {
+// TODO: improve confirmation dialog
+function delAcc() {
   delAccBtn.textContent = 'Confirm Deletion!';
 
   delAccBtn.addEventListener('click', async () => {
