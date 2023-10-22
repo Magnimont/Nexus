@@ -96,7 +96,7 @@ Help us achieve these goals by giving Nexus a star and sharing it with others!
 
 ## Authors 👨‍💻
 
-Nexus is developed by [Gaurav](https://discord.com/users/891214041391988757), [Vikas Jha](https://discord.com/users/532177714203852800) and [jvherck](https://github.com/jvherck) from NoError Studios.
+Nexus is developed by [Gaurav](https://discord.com/users/891214041391988757), [Vikas Jha](https://discord.com/users/532177714203852800), [jvherck](https://github.com/jvherck) and [Ninju](https://discord.com/users/743317832434974811) from NoError Studios.
 
 ---
 
