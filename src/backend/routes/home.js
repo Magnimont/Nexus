@@ -11,6 +11,11 @@ router.get('/login', (req, res) => {
     res.render('login.ejs');
 });
 
+/* Contributors */
+router.get('/contributors', (req, res) => {
+    res.render('contributors.ejs');
+})
+
 /* Privacy Policy */
 router.get('/privacypolicy', (req, res) => {
     res.render('privacypolicy.ejs');
