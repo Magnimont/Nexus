@@ -25,8 +25,9 @@ If applicable, add screenshots to help explain your problem.
 
 ### Desktop (please complete the following information):
  - OS: [e.g. Windows]
- - Browser: [e.g. Chrome, Edge]
- - Version: [e.g. 3.0.0]
+ - Browser: [e.g. Chrome, Safari]
+ - Browser version: [e.g. Version 1.59.120 Chromium: 118.0.5993.88 (Official Build)  (64-bit)]
+ - Nexus version: [e.g. 3.1.0]
 
 ### Smartphone (please complete the following information):
  - Device: [e.g. iPhone15]
