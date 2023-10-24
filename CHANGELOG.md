@@ -8,7 +8,7 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 ---
 
-## 3.1.2 ([#22](https://github.com/NoErrorStudio/Nexus/pull/22))
+## 3.1.2 ([#23](https://github.com/NoErrorStudio/Nexus/pull/23))
 2023-10-21
 
 ### Added
