@@ -6,10 +6,31 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 
 # Changelog
 
+---
+
+## 3.1.2 ([#23](https://github.com/NoErrorStudio/Nexus/pull/23))
+2023-10-21
+
+### Added
+- `/contributors` webpage
+
+### Fixed
+- Several bugs have been fixed
+
+---
+
+## 3.1.1 ([#22](https://github.com/NoErrorStudio/Nexus/pull/22))
+2023-10-20
+
+### Improvements
+- Desktop notifications have been improved (clicking the notification will open Nexus)
+
+---
+
 ## 3.1.0 ([#18](https://github.com/NoErrorStudio/Nexus/pull/18))
 2023-10-16
 
-### New Features
+### Added
 - 2FA: use e-mail as 2nd factor authentication ([#8](https://github.com/NoErrorStudio/Nexus/issues/8))
 
 ### Improvements
@@ -59,7 +80,7 @@ PLEASE FOLLOW THE FORMAT USED FOR THE EARLIEST VERSION
 ## 3.0.0 ([#5](https://github.com/NoErrorStudio/Nexus/pull/5))
 2023-09-17
 
-### New Features
+### Added
 - Message context menu (copy, edit, reply, delete)
 - Homepage (URL path: `/`)
 - Desktop notifications
