@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project is old and contains outdated dependencies full of vulnerabilities. This project is no longer maintained and not advised to be used (unless you update all dependencies and thoroughly check for security vulnerabilities). This project will be added to the Github Archive.
+
 # Nexus 🚀
 
 Nexus is an open-source chatting app inspired by Discord, designed to provide a modern, feature-rich, and community-driven communication platform. It is built with HTML, JavaScript, CSS, and Node.js.
